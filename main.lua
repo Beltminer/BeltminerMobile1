@@ -4,6 +4,7 @@ display.setStatusBar( display.HiddenStatusBar )
 -- DIRECTOR CLASS SAMPLE
 --====================================================================--
 -- Just a test Note
+--Another test note
 --[[
 
  - Version: 1.3
