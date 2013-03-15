@@ -5,6 +5,9 @@ display.setStatusBar( display.HiddenStatusBar )
 --====================================================================--
 -- Just a test Note
 --Another test note
+--another test, wow
+--yet another test
+-- sigh
 --[[
 
  - Version: 1.3
