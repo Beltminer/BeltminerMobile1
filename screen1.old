@@ -99,7 +99,7 @@ new = function ( params )
 	--
 	local bt06t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "home", "downFlip" ) --previously screen2
+			director:changeScene( "screen1", "downFlip" ) --previously screen2
 		end
 	end
 	--

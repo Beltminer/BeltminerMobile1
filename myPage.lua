@@ -78,13 +78,13 @@ new = function ( params )
 	--
 	local bt02t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "myPage", "moveFromLeft" )
+			director:changeScene( "upgrade", "moveFromLeft" )
 		end
 	end
 	--
 	local bt03t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "moveFromTop" )
+			director:changeScene( "upgrade", "moveFromTop" )
 		end
 	end
 	--
@@ -96,7 +96,7 @@ new = function ( params )
 	--
 	local bt05t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "flip" )
+			director:changeScene( "myPage", "flip" )
 		end
 	end
 	--
@@ -134,6 +134,8 @@ new = function ( params )
 	-- UI Objects
 	------------------
 	
+	-- HUD buttons
+	
 	local bt01 = ui.newButton{
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
@@ -147,8 +149,8 @@ new = function ( params )
 	local bt02 = ui.newButton{
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
-					text = "MY PAGE",
-					size = 40,
+					text = "UPGRADE",
+					size = 32,
 					font = "Tahoma",
 					onEvent = bt02t,
 					id = "bt02"
@@ -157,28 +159,18 @@ new = function ( params )
 	local bt03 = ui.newButton{
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
-					text = "UPGRADE",
-					size = 40,
+					text = "STORAGE",
+					size = 32,
 					font = "Tahoma",
 					onEvent = bt03t,
 					id = "bt03"
 	}
 	--
-	local bt04 = ui.newButton{
-					default = "bigBtnUp.png",
-					over = "bigBtnDown.png",
-					text = "INBOX",
-					size = 50,
-					font = "Tahoma",
-					onEvent = bt04t, --previously bt04t
-					id = "bt04"
-	}
-	--
 	local bt05 = ui.newButton{
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
-					text = "BACK",
-					size = 40,
+					text = "MY PAGE",
+					size = 32,
 					font = "Tahoma",
 					onEvent = bt05t,
 					id = "bt05"
@@ -197,11 +189,24 @@ new = function ( params )
 	local bt07 = ui.newButton{
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
-					text = "NEXT",
-					size = 40,
+					text = "ASTEROIDS",
+					size = 32,
 					font = "Tahoma",
 					onEvent = bt07t,
 					id = "bt07"
+	}
+	
+	--Screen buttons
+	
+	--
+	local bt04 = ui.newButton{
+					default = "bigBtnUp.png",
+					over = "bigBtnDown.png",
+					text = "INBOX",
+					size = 50,
+					font = "Tahoma",
+					onEvent = bt04t, --previously bt04t
+					id = "bt04"
 	}
 	--
 	local bt08 = ui.newButton{
