@@ -79,13 +79,21 @@ new = function ( params )
 	--
 	local bt02t = function ( event )
 		if event.phase == "release" then
+<<<<<<< HEAD:modules/myPage.lua
 			director:changeScene( "modules.myPage", "moveFromLeft" )
+=======
+			director:changeScene( "upgrade", "moveFromLeft" )
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:myPage.lua
 		end
 	end
 	--
 	local bt03t = function ( event )
 		if event.phase == "release" then
+<<<<<<< HEAD:modules/myPage.lua
 			director:changeScene( "modules.screen2", "moveFromTop" )
+=======
+			director:changeScene( "upgrade", "moveFromTop" )
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:myPage.lua
 		end
 	end
 	--
@@ -97,7 +105,11 @@ new = function ( params )
 	--
 	local bt05t = function ( event )
 		if event.phase == "release" then
+<<<<<<< HEAD:modules/myPage.lua
 			director:changeScene( "modules.screen2", "flip" )
+=======
+			director:changeScene( "myPage", "flip" )
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:myPage.lua
 		end
 	end
 	--
@@ -135,6 +147,8 @@ new = function ( params )
 	-- UI Objects
 	------------------
 	
+	-- HUD buttons
+	
 	local bt01 = ui.newButton{
 					default = IMAGES.BUTTON_HUD_UP,
 					over = IMAGES.BUTTON_HUD_DOWN,
@@ -146,25 +160,40 @@ new = function ( params )
 	}
 	--
 	local bt02 = ui.newButton{
+<<<<<<< HEAD:modules/myPage.lua
 					default = IMAGES.BUTTON_HUD_UP,
 					over = IMAGES.BUTTON_HUD_DOWN,
 					text = "MY PAGE",
 					size = 40,
+=======
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "UPGRADE",
+					size = 32,
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:myPage.lua
 					font = "Tahoma",
 					onEvent = bt02t,
 					id = "bt02"
 	}
 	--
 	local bt03 = ui.newButton{
+<<<<<<< HEAD:modules/myPage.lua
 					default = IMAGES.BUTTON_HUD_UP,
 					over = IMAGES.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
 					size = 40,
+=======
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "STORAGE",
+					size = 32,
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:myPage.lua
 					font = "Tahoma",
 					onEvent = bt03t,
 					id = "bt03"
 	}
 	--
+<<<<<<< HEAD:modules/myPage.lua
 	local bt04 = ui.newButton{
 					default = IMAGES.BIG_BUTTON_UP,
 					over = IMAGES.BIG_BUTTON_DOWN,
@@ -180,6 +209,13 @@ new = function ( params )
 					over = IMAGES.BUTTON_HUD_DOWN,
 					text = "BACK",
 					size = 40,
+=======
+	local bt05 = ui.newButton{
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "MY PAGE",
+					size = 32,
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:myPage.lua
 					font = "Tahoma",
 					onEvent = bt05t,
 					id = "bt05"
@@ -196,13 +232,33 @@ new = function ( params )
 	}
 	--
 	local bt07 = ui.newButton{
+<<<<<<< HEAD:modules/myPage.lua
 					default = IMAGES.BUTTON_HUD_UP,
 					over = IMAGES.BUTTON_HUD_DOWN,
 					text = "NEXT",
 					size = 40,
+=======
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "ASTEROIDS",
+					size = 32,
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:myPage.lua
 					font = "Tahoma",
 					onEvent = bt07t,
 					id = "bt07"
+	}
+	
+	--Screen buttons
+	
+	--
+	local bt04 = ui.newButton{
+					default = "bigBtnUp.png",
+					over = "bigBtnDown.png",
+					text = "INBOX",
+					size = 50,
+					font = "Tahoma",
+					onEvent = bt04t, --previously bt04t
+					id = "bt04"
 	}
 	--
 	local bt08 = ui.newButton{

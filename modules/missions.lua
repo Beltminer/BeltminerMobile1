@@ -93,9 +93,13 @@ new = function ( params )
 		end
 	end
 	--
-	local bt02t = function ( event ) --My Page
+	local bt02t = function ( event ) --Upgrades
 		if event.phase == "release" then
+<<<<<<< HEAD:modules/missions.lua
 			director:changeScene( "modules.myPage", "moveFromLeft" )
+=======
+			director:changeScene( "upgrade", "moveFromLeft" )
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:missions.lua
 		end
 	end
 	--
@@ -113,7 +117,11 @@ new = function ( params )
 	--
 	local bt05t = function ( event )
 		if event.phase == "release" then
+<<<<<<< HEAD:modules/missions.lua
 			director:changeScene( "modules.screen2", "flip" )
+=======
+			director:changeScene( "myPage", "flip" )
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:missions.lua
 		end
 	end
 	--
@@ -138,6 +146,7 @@ new = function ( params )
 	------------------
 	-- UI Objects
 	------------------
+<<<<<<< HEAD:modules/missions.lua
 
     local bt01 = ui.newButton{
                     default = images.BUTTON_HUD_UP,
@@ -181,6 +190,44 @@ new = function ( params )
 					over = images.BUTTON_HUD_DOWN,
 					text = "BACK",
 					size = 40,
+=======
+	
+	local bt01 = ui.newButton{
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "MISSIONS",
+					size = 40,
+					font = "Tahoma",
+					onEvent = bt01t,
+					id = "bt01"
+	}
+	--
+	local bt02 = ui.newButton{
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "UPGRADE",
+					size = 32,
+					font = "Tahoma",
+					onEvent = bt02t,
+					id = "bt02"
+	}
+	--
+	local bt03 = ui.newButton{
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "STORAGE",
+					size = 32,
+					font = "Tahoma",
+					onEvent = bt03t,
+					id = "bt03"
+	}
+	--
+	local bt05 = ui.newButton{
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "MY PAGE",
+					size = 32,
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:missions.lua
 					font = "Tahoma",
 					onEvent = bt05t,
 					id = "bt05"
@@ -197,13 +244,29 @@ new = function ( params )
 	}
 	--
 	local bt07 = ui.newButton{
+<<<<<<< HEAD:modules/missions.lua
 					default = images.BUTTON_HUD_UP,
 					over = images.BUTTON_HUD_DOWN,
 					text = "NEXT",
 					size = 40,
+=======
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
+					text = "ASTEROIDS",
+					size = 32,
+>>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:missions.lua
 					font = "Tahoma",
 					onEvent = bt07t,
 					id = "bt07"
+	}
+	
+	--Screen buttons
+	
+	local bt04 = ui.newButton{
+					default = "launchMissionUp.png",
+					over = "launchMissionDown.png",
+					onEvent = bt04t, --previously bt04t
+					id = "bt04"
 	}
 	--
 	local bt08 = ui.newButton{

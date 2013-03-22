@@ -25,8 +25,7 @@ new = function ( params )
 	-- Imports
 	------------------
 	
-	local ui = require ( "modules.ui" )
-    local IMAGES = require ( "modules.images" )
+	local ui = require ( "ui" )
 	
 	------------------
 	-- Groups
@@ -37,15 +36,6 @@ new = function ( params )
 	------------------
 	-- Display Objects
 	------------------
-<<<<<<< HEAD:modules/screen1.lua
-	local background = display.newImage( IMAGES.HOME_SCREEN )
-	local splashImage = display.newImage ( IMAGES.HOME_PAGE_SPLASH )
-	local headerHUD = display.newImage( IMAGES.GROUND )
-	local footerHUD = display.newImage( IMAGES.GROUND )
-	local title      = display.newText( "Director Class", 0, 0, native.systemFontBold, 16 )
-	local createdBy  = display.newText( "Created by Ricardo Rauber", 0, 0, native.systemFontBold, 16 )
-	local website    = display.newText( "http://rauberlabs.blogspot.com/", 0, 0, native.systemFontBold, 16 )
-=======
 	
 	local background = display.newImage( "HomeScreen.png" )
 	local splashImage = display.newImage ("HomePageSplash.png")
@@ -54,7 +44,6 @@ new = function ( params )
 	--local title      = display.newText( "Director Class", 0, 0, native.systemFontBold, 16 )
 	--local createdBy  = display.newText( "Created by Ricardo Rauber", 0, 0, native.systemFontBold, 16 )
 	--local website    = display.newText( "http://rauberlabs.blogspot.com/", 0, 0, native.systemFontBold, 16 )
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
 	
 	------------------
 	-- Link
@@ -80,61 +69,49 @@ new = function ( params )
 	
 	local bt01t = function ( event )
 		if event.phase == "release" then --Missions
-			director:changeScene( "modules.missions", "overFromRight" )
+			director:changeScene( "missions", "overFromRight" )
 		end
 	end
 	--
 	local bt02t = function ( event ) --My Page
 		if event.phase == "release" then
-<<<<<<< HEAD:modules/screen1.lua
-			director:changeScene( "modules.myPage", "moveFromLeft" )
-=======
 			director:changeScene( "upgrade", "moveFromLeft" )
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
 		end
 	end
 	--
 	local bt03t = function ( event ) --Upgrade
 		if event.phase == "release" then
-			director:changeScene( "modules.upgrade", "moveFromTop" )
+			director:changeScene( "upgrade", "moveFromTop" )
 		end
 	end
 	--
 	local bt04t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.missions", "overFromBottom" )
+			director:changeScene( "missions", "overFromBottom" )
 		end
 	end
 	--
 	local bt05t = function ( event )
 		if event.phase == "release" then
-<<<<<<< HEAD:modules/screen1.lua
-			director:changeScene( "modules.screen2", "flip" )
-=======
 			director:changeScene( "myPage", "flip" )
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
 		end
 	end
 	--
 	local bt06t = function ( event )
 		if event.phase == "release" then
-<<<<<<< HEAD:modules/screen1.lua
-			director:changeScene( "modules.screen1", "downFlip" ) --previously screen2
-=======
 			director:changeScene( "home", "downFlip" ) --previously screen2
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
 		end
 	end
 	--
 	local bt07t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "fade" )
+			director:changeScene( "screen2", "fade" )
 		end
 	end
 	--
 	local bt08t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
+			director:changeScene( "screen2", "crossfade" )
 		end
 	end
 	
@@ -145,8 +122,8 @@ new = function ( params )
 	--HUD Buttons
 	
 	local bt01 = ui.newButton{
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
 					text = "MISSIONS",
 					size = 40,
 					font = "Tahoma",
@@ -155,67 +132,38 @@ new = function ( params )
 	}
 	--
 	local bt02 = ui.newButton{
-<<<<<<< HEAD:modules/screen1.lua
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
-					text = "MY PAGE",
-					size = 40,
-=======
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
 					text = "UPGRADE",
 					size = 32,
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
 					font = "Tahoma",
 					onEvent = bt02t,
 					id = "bt02"
 	}
 	--
 	local bt03 = ui.newButton{
-<<<<<<< HEAD:modules/screen1.lua
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
-					text = "UPGRADE",
-					size = 40,
-=======
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
 					text = "STORAGE",
 					size = 32,
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
 					font = "Tahoma",
 					onEvent = bt03t,
 					id = "bt03"
 	}
 	--
-<<<<<<< HEAD:modules/screen1.lua
-	local bt04 = ui.newButton{
-					default = IMAGES.BUTTON_TAP_START_UP,
-					over = IMAGES.BUTTON_TAP_START_DOWN,
-					onEvent = bt04t, --previously bt04t
-					id = "bt04"
-	}
-	--
-	local bt05 = ui.newButton{
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
-					text = "BACK",
-					size = 40,
-=======
 	local bt05 = ui.newButton{
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
 					text = "MY PAGE",
 					size = 32,
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
 					font = "Tahoma",
 					onEvent = bt05t,
 					id = "bt05"
 	}
 	--
 	local bt06 = ui.newButton{
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
+					default = "BtnHUDUp.png",
+					over = "BtnHUDDown.png",
 					text = "HOME",
 					size = 56,
 					font = "Tahoma",
@@ -224,17 +172,10 @@ new = function ( params )
 	}
 	--
 	local bt07 = ui.newButton{
-<<<<<<< HEAD:modules/screen1.lua
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
-					text = "NEXT",
-					size = 40,
-=======
 					default = "BtnHUDUp.png",
 					over = "BtnHUDDown.png",
 					text = "ASTEROIDS",
 					size = 32,
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
 					font = "Tahoma",
 					onEvent = bt07t,
 					id = "bt07"
@@ -244,8 +185,8 @@ new = function ( params )
 	
 	--
 	local bt08 = ui.newButton{
-					default = IMAGES.BUTTON_CROSSFADE,
-					over = IMAGES.BUTTON_CROSSFADE,
+					default = "bt_crossfade.png",
+					over = "bt_crossfade.png",
 					onEvent = bt08t,
 					id = "bt08"
 	}
@@ -265,18 +206,18 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btSlide = display.newImage( IMAGES.BUTTON_SLIDE )
+	local btSlide = display.newImage( "bt_slide.png" )
 	
 	------------------
 	-- Listener
 	------------------
-
+	
 	local btSlidet = function ( event )
 		if event.phase == "ended" then
 			if event.xStart >= event.x then
-				director:changeScene( "modules.screen2", "moveFromRight" )
+				director:changeScene( "screen2", "moveFromRight" )
 			else
-				director:changeScene( "modules.screen2", "moveFromLeft" )
+				director:changeScene( "screen2", "moveFromLeft" )
 			end
 		end
 	end
@@ -289,7 +230,7 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btPopUp = display.newImage( IMAGES.BUTTON_POPUP )
+	local btPopUp = display.newImage( "bt_popup.png" )
 	
 	------------------
 	-- On Close
@@ -325,7 +266,7 @@ new = function ( params )
 	
 	local btPopUpt = function ( event )
 		if event.phase == "ended" then
-			director:openPopUp( "modules.screen3", popClosed )
+			director:openPopUp( "screen3", popClosed )
 		end
 	end
 	
@@ -337,7 +278,7 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btParameters = display.newImage( IMAGES.BUTTON_PARAMETERS )
+	local btParameters = display.newImage( "bt_parameters.png" )
 	
 	------------------
 	-- Listener
@@ -345,7 +286,7 @@ new = function ( params )
 	
 	local btParameterst = function ( event )
 		if event.phase == "ended" then
-			director:changeScene( { label="Sending Parameters", reload=true } , "modules.screen2", "fade", "white" )
+			director:changeScene( { label="Sending Parameters", reload=true } , "screen2", "fade", "white" )
 		end
 	end
 	
@@ -360,7 +301,7 @@ new = function ( params )
 		------------------
 		
 		localGroup:insert( background )
-        localGroup:insert( splashImage )
+		localGroup:insert( splashImage )
 		localGroup:insert( headerHUD )
 		localGroup:insert( footerHUD )
 		--localGroup:insert( title )
