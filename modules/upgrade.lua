@@ -29,7 +29,8 @@ new = function ( params )
 	-- Imports
 	------------------
 	
-	local ui = require ( "ui" )
+	local ui = require ( "modules.ui" )
+    local images = require ( "modules.images" )
 	
 	------------------
 	-- Label
@@ -60,19 +61,19 @@ new = function ( params )
 	-- Display Objects
 	------------------
 	
-	local background = display.newImage( "UpgradeScreen.png" )
-	local upgradeBackground01 = display.newImage( "upgradeBackground.png" )
-	local upgradeBackground02 = display.newImage( "upgradeBackground.png" )
-	local upgradeBackground03 = display.newImage( "upgradeBackground.png" )
-	local upgradeBackground04 = display.newImage( "upgradeBackground.png" )
-	local greenMeterBar01 = display.newImage( "greenMeterBar.png" )
-	local greenMeterBar02 = display.newImage( "greenMeterBar.png" )
-	local greenMeterBar03 = display.newImage( "greenMeterBar.png" )
-	local greenMeterBar04 = display.newImage( "greenMeterBar.png" )
-	local prospectorUpgrade = display.newImage( "sensorUpgrade.png" )
-	local sensorUpgrade = display.newImage( "sensorUpgrade.png" )
-	local cargoUpgrade = display.newImage( "sensorUpgrade.png" )
-	local fuelUpgrade = display.newImage( "sensorUpgrade.png" )
+	local background = display.newImage( images.UPGRADE_SCREEN )
+	local upgradeBackground01 = display.newImage( images.UPGRADE_BACKGROUND )
+	local upgradeBackground02 = display.newImage( images.UPGRADE_BACKGROUND )
+	local upgradeBackground03 = display.newImage( images.UPGRADE_BACKGROUND )
+	local upgradeBackground04 = display.newImage( images.UPGRADE_BACKGROUND )
+	local greenMeterBar01 = display.newImage( images.GREEN_METER_BAR )
+	local greenMeterBar02 = display.newImage( images.GREEN_METER_BAR )
+	local greenMeterBar03 = display.newImage( images.GREEN_METER_BAR )
+	local greenMeterBar04 = display.newImage( images.GREEN_METER_BAR )
+	local prospectorUpgrade = display.newImage( images.SENSOR_UPGRADE )
+	local sensorUpgrade = display.newImage( images.SENSOR_UPGRADE )
+	local cargoUpgrade = display.newImage( images.SENSOR_UPGRADE )
+	local fuelUpgrade = display.newImage( images.SENSOR_UPGRADE )
 	local upgradeTitle01 = display.newText( "Prospector Mk II" , 0, 0, Tahoma, 30 )
 	local upgradeCurrent01 = display.newText( "Armor: 15 Range: 32" , 0, 0, Tahoma, 24 )
 	local upgradeStatus01 = display.newText( "6/10" , 0, 0, Tahoma, 36 )
@@ -85,8 +86,8 @@ new = function ( params )
 	local upgradeTitle04 = display.newText( "Prospector Mk II" , 0, 0, Tahoma, 30 )
 	local upgradeCurrent04 = display.newText( "Armor: 15 Range: 32" , 0, 0, Tahoma, 24 )
 	local upgradeStatus04 = display.newText( "6/10" , 0, 0, Tahoma, 36 )
-	local headerHUD = display.newImage( "ground.png" )
-	local footerHUD = display.newImage( "ground.png" )
+	local headerHUD = display.newImage( images.GROUND )
+	local footerHUD = display.newImage( images.GROUND )
 		
 	------------------
 	-- Functions
@@ -94,71 +95,73 @@ new = function ( params )
 	
 	local bt01t = function ( event ) -- Missions
 		if event.phase == "release" then
-			director:changeScene( "missions", "overFromRight" )
+			director:changeScene( "modules.missions", "overFromRight" )
 		end
 	end
 	--
 	local bt02t = function ( event ) -- My Page
 		if event.phase == "release" then
-			director:changeScene( "myPage", "moveFromLeft" )
+			director:changeScene( "modules.myPage", "moveFromLeft" )
 		end
 	end
 	--
 	local bt03t = function ( event ) -- Upgrade
 		if event.phase == "release" then
-			director:changeScene( "upgrade", "moveFromTop" )
+			director:changeScene( "modules.upgrade", "moveFromTop" )
 		end
 	end
 	--
 	local bt04t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "overFromBottom" )
+			director:changeScene( "modules.screen2", "overFromBottom" )
 		end
 	end
 	--
 	local bt05t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "flip" )
+			director:changeScene( "modules.screen2", "flip" )
 		end
 	end
 	--
 	local bt06t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen1", "downFlip" ) --previously screen2
+			director:changeScene( "modules.screen1", "downFlip" ) --previously screen2
 		end
 	end
 	--
 	local bt07t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "fade" )
+			director:changeScene( "modules.screen2", "fade" )
 		end
 	end
 	--
 	local bt08t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "crossfade" )
+			director:changeScene( "modules.screen2", "crossfade" )
 		end
 	end
 	--
 	local bt09t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "crossfade" )
+			director:changeScene( "modules.screen2", "crossfade" )
 		end
 	end
 	--
 	local bt10t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "crossfade" )
+			director:changeScene( "modules.screen2", "crossfade" )
 		end
 	end
 	
 	------------------
 	-- UI Objects
 	------------------
-	
+
+    -- FIXME: OK, this copy and paste shit has got to go. This needs to be in its own module.
+
 	local bt01 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "MISSIONS",
 					size = 40,
 					font = "Tahoma",
@@ -167,8 +170,8 @@ new = function ( params )
 	}
 	--
 	local bt02 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "MY PAGE",
 					size = 40,
 					font = "Tahoma",
@@ -177,8 +180,8 @@ new = function ( params )
 	}
 	--
 	local bt03 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
 					size = 40,
 					font = "Tahoma",
@@ -187,8 +190,8 @@ new = function ( params )
 	}
 	--
 	local bt04 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
 					size = 36,
 					font = "Tahoma",
@@ -197,8 +200,8 @@ new = function ( params )
 	}
 	--
 	local bt05 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "BACK",
 					size = 40,
 					font = "Tahoma",
@@ -207,8 +210,8 @@ new = function ( params )
 	}
 	--
 	local bt06 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "HOME",
 					size = 60,
 					font = "Tahoma",
@@ -217,8 +220,8 @@ new = function ( params )
 	}
 	--
 	local bt07 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "NEXT",
 					size = 40,
 					font = "Tahoma",
@@ -227,8 +230,8 @@ new = function ( params )
 	}
 	--
 	local bt08 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
 					size = 36,
 					font = "Tahoma",
@@ -236,8 +239,8 @@ new = function ( params )
 					id = "bt08"
 	}
 	local bt09 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
 					size = 36,
 					font = "Tahoma",
@@ -245,8 +248,8 @@ new = function ( params )
 					id = "bt09"
 	}
 	local bt10 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
 					size = 36,
 					font = "Tahoma",
@@ -264,9 +267,9 @@ new = function ( params )
 	local touched = function ( event )
 		if event.phase == "ended" then
 			if vReload then
-				director:changeScene( { label="Scene Reloaded" }, "screen2","moveFromRight" )
+				director:changeScene( { label="Scene Reloaded" }, "modules.screen2","moveFromRight" )
 			else
-				director:changeScene( "screen1", "crossfade" )
+				director:changeScene( "modules.screen1", "crossfade" )
 			end
 		end
 	end

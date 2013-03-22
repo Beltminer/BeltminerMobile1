@@ -29,7 +29,8 @@ new = function ( params )
 	-- Imports
 	------------------
 	
-	local ui = require ( "ui" )
+	local ui = require ( "modules.ui" )
+    local images = require ( "modules.images" )
 	
 	------------------
 	-- Label
@@ -60,9 +61,9 @@ new = function ( params )
 	-- Display Objects
 	------------------
 	
-	local background = display.newImage( "stars.png" )
-	local prospector = display.newImage( "Prospector.png" )
-	local headerHUD = display.newImage("ground.png")
+	local background = display.newImage( images.STARS )
+	local prospector = display.newImage( images.PROSPECTOR )
+	local headerHUD = display.newImage(images.GROUND)
 	--local title = display.newText( vLabel, 0, 0, Tahoma, 47 )
 	--local fuelLabel = display.newText( "FUEL: 6/10", 0, 0, Tahoma, 36 ) -- make dynamic
 	--local expLabel = display.newText( "EXP: 32/550", 0, 0, Tahoma, 36 ) -- make dynamic
@@ -80,7 +81,7 @@ new = function ( params )
 	
 	local bt01t = function ( event ) --Missions
 		if event.phase == "release" then
-			director:changeScene( "screen1", "overFromRight" )
+			director:changeScene( "modules.screen1", "overFromRight" )
 		end
 	end
 	--
@@ -90,8 +91,8 @@ new = function ( params )
 	------------------
 	
 	local bt01 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "HOME",
 					size = 40,
 					font = "Tahoma",
@@ -111,9 +112,9 @@ new = function ( params )
 	local touched = function ( event )
 		if event.phase == "ended" then
 			if vReload then
-				director:changeScene( { label="Scene Reloaded" }, "screen2","moveFromRight" )
+				director:changeScene( { label="Scene Reloaded" }, "modules.screen2","moveFromRight" )
 			else
-				director:changeScene( "screen1", "crossfade" )
+				director:changeScene( "modules.screen1", "crossfade" )
 			end
 		end
 	end

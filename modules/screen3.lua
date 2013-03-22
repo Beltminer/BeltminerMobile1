@@ -1,7 +1,7 @@
 module(..., package.seeall)
 
 --====================================================================--
--- SCENE: SCREEN 2
+-- POP UP: SCREEN 3
 --====================================================================--
 
 --[[
@@ -19,26 +19,7 @@ module(..., package.seeall)
 
 --]]
 
-new = function ( params )
-	
-	------------------
-	-- Params
-	------------------
-	
-	local vLabel = "TOUCH TO GO BACK"
-	local vReload = false
-	--
-	if type( params ) == "table" then
-		--
-		if type( params.label ) == "string" then
-			vLabel = params.label
-		end
-		--
-		if type( params.reload ) == "boolean" then
-			vReload = params.reload
-		end
-		--
-	end
+new = function ()
 	
 	------------------
 	-- Groups
@@ -49,9 +30,14 @@ new = function ( params )
 	------------------
 	-- Display Objects
 	------------------
+    local IMAGES = require ( "modules.images" )
 	
-	local background = display.newImage( "background2.png" )
-	local title = display.newText( vLabel, 0, 0, Tahoma, 40 )
+	local w, h = display.contentWidth, display.contentHeight
+	local background = display.newImage( IMAGES.BACKGROUND3 )
+	background.xScale = 0.8
+	background.yScale = 0.8
+	background.alpha = 0.95
+	local title = display.newText( "TOUCH TO GO BACK", 0, 0, Tahoma, 40 )
 	
 	------------------
 	-- Listeners
@@ -59,11 +45,7 @@ new = function ( params )
 	
 	local touched = function ( event )
 		if event.phase == "ended" then
-			if vReload then
-				director:changeScene( { label="Scene Reloaded" }, "screen2","moveFromRight" )
-			else
-				director:changeScene( "screen1", "crossfade" )
-			end
+			director:closePopUp()
 		end
 	end
 	
@@ -71,7 +53,7 @@ new = function ( params )
 	-- INITIALIZE
 	--====================================================================--
 	
-	local initVars = function ()
+	local function initVars ()
 		
 		------------------
 		-- Inserts

@@ -29,7 +29,9 @@ new = function ( params )
 	-- Imports
 	------------------
 	
-	local ui = require ( "ui" )
+	local ui = require ( "modules.ui" )
+    local images = require ( "modules.images" )
+    local strings = require ( "modules.strings" )
 	
 	------------------
 	-- Label
@@ -55,22 +57,31 @@ new = function ( params )
 	------------------
 	
 	local localGroup = display.newGroup()
-	
+
+
+    ------------------
+    -- Strings
+    ------------------
+
+    local fuelString = strings.FUEL.."6/10"
+    local xpString = strings.EXPERIENCE.."32/550"
+    local msgString = "You get free fuel until level 20. Complete your missions now!"
+
 	------------------
 	-- Display Objects
 	------------------
-	
-	local background = display.newImage( "MissionsScreen.png" )
+
+	local background = display.newImage( images.MISSIONS_SCREEN  )
 	local title = display.newText( vLabel, 0, 0, Tahoma, 47 )
-	local fuelLabel = display.newText( "FUEL: 6/10", 0, 0, Tahoma, 36 ) -- make dynamic
-	local expLabel = display.newText( "EXP: 32/550", 0, 0, Tahoma, 36 ) -- make dynamic
-	local msgLabel = display.newText( "You get free fuel until level 20. Complete your missions now!", 0, 0, 410, 0, Tahoma, 36 ) -- make dynamic
-	local scientistWoman = display.newImage( "scientistWoman.png" )
-	local headerHUD = display.newImage( "ground.png" )
-	local footerHUD = display.newImage( "ground.png" )
-	local bannerImage = display.newImage( "bannerImage.png" )
-	local greenMeterBar = display.newImage( "greenMeterBar.png" )
-	local blueMeterBar = display.newImage( "blueMeterBar.png" )
+	local fuelLabel = display.newText( fuelString, 0, 0, Tahoma, 36 ) -- make dynamic
+	local expLabel = display.newText( xpString, 0, 0, Tahoma, 36 ) -- make dynamic
+	local msgLabel = display.newText( msgString, 0, 0, 410, 0, Tahoma, 36 ) -- make dynamic
+	local scientistWoman = display.newImage( images.SCIENTIST_WOMAN )
+	local headerHUD = display.newImage( images.GROUND )
+	local footerHUD = display.newImage( images.GROUND )
+	local bannerImage = display.newImage( images.BANNER_IMAGE )
+	local greenMeterBar = display.newImage( images.GREEN_METER_BAR )
+	local blueMeterBar = display.newImage( images.BLUE_METER_BAR )
 	
 	------------------
 	-- Functions
@@ -78,96 +89,96 @@ new = function ( params )
 	
 	local bt01t = function ( event ) --Missions
 		if event.phase == "release" then
-			director:changeScene( "missions", "overFromRight" )
+			director:changeScene( "modules.missions", "overFromRight" )
 		end
 	end
 	--
 	local bt02t = function ( event ) --My Page
 		if event.phase == "release" then
-			director:changeScene( "myPage", "moveFromLeft" )
+			director:changeScene( "modules.myPage", "moveFromLeft" )
 		end
 	end
 	--
 	local bt03t = function ( event ) -- Upgrade
 		if event.phase == "release" then
-			director:changeScene( "upgrade", "moveFromTop" )
+			director:changeScene( "modules.upgrade", "moveFromTop" )
 		end
 	end
 	--
 	local bt04t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "missionLaunch", "overFromBottom" )
+			director:changeScene( "modules.missionLaunch", "overFromBottom" )
 		end
 	end
 	--
 	local bt05t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "flip" )
+			director:changeScene( "modules.screen2", "flip" )
 		end
 	end
 	--
 	local bt06t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen1", "downFlip" ) --previously screen2
+			director:changeScene( "modules.screen1", "downFlip" ) --previously screen2
 		end
 	end
 	--
 	local bt07t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "fade" )
+			director:changeScene( "modules.screen2", "fade" )
 		end
 	end
 	--
 	local bt08t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "crossfade" )
+			director:changeScene( "modules.screen2", "crossfade" )
 		end
 	end
 	
 	------------------
 	-- UI Objects
 	------------------
-	
-	local bt01 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
-					text = "MISSIONS",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt01t,
-					id = "bt01"
-	}
-	--
-	local bt02 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
-					text = "MY PAGE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt02t,
-					id = "bt02"
-	}
-	--
-	local bt03 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
-					text = "UPGRADE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt03t,
-					id = "bt03"
+
+    local bt01 = ui.newButton{
+                    default = images.BUTTON_HUD_UP,
+                    over = images.BUTTON_HUD_DOWN,
+                    text = "MISSIONS",
+                    size = 40,
+                    font = "Tahoma",
+                    onEvent = bt01t,
+                    id = "bt01"
+    }
+    --
+    local bt02 = ui.newButton{
+                    default = images.BUTTON_HUD_UP,
+                    over = images.BUTTON_HUD_DOWN,
+                    text = "MY PAGE",
+                    size = 40,
+                    font = "Tahoma",
+                    onEvent = bt02t,
+                    id = "bt02"
+    }
+    --
+    local bt03 = ui.newButton{
+                    default = images.BUTTON_HUD_UP,
+                    over = images.BUTTON_HUD_DOWN,
+                    text = "UPGRADE",
+                    size = 40,
+                    font = "Tahoma",
+                    onEvent = bt03t,
+                    id = "bt03"
 	}
 	--
 	local bt04 = ui.newButton{
-					default = "launchMissionUp.png",
-					over = "launchMissionDown.png",
+					default = images.LAUNCH_MISSION_UP,
+					over = images.LAUNCH_MISSION_DOWN,
 					onEvent = bt04t, --previously bt04t
 					id = "bt04"
 	}
 	--
 	local bt05 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "BACK",
 					size = 40,
 					font = "Tahoma",
@@ -176,8 +187,8 @@ new = function ( params )
 	}
 	--
 	local bt06 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "HOME",
 					size = 60,
 					font = "Tahoma",
@@ -186,8 +197,8 @@ new = function ( params )
 	}
 	--
 	local bt07 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "NEXT",
 					size = 40,
 					font = "Tahoma",
@@ -196,8 +207,8 @@ new = function ( params )
 	}
 	--
 	local bt08 = ui.newButton{
-					default = "bt_crossfade.png",
-					over = "bt_crossfade.png",
+					default = images.BUTTON_CROSSFADE,
+					over = images.BUTTON_CROSSFADE,
 					onEvent = bt08t,
 					id = "bt08"
 	}
@@ -212,9 +223,9 @@ new = function ( params )
 	local touched = function ( event )
 		if event.phase == "ended" then
 			if vReload then
-				director:changeScene( { label="Scene Reloaded" }, "screen2","moveFromRight" )
+				director:changeScene( { label="Scene Reloaded" }, "modules.screen2","moveFromRight" )
 			else
-				director:changeScene( "screen1", "crossfade" )
+				director:changeScene( "modules.screen1", "crossfade" )
 			end
 		end
 	end
