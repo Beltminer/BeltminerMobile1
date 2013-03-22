@@ -6,16 +6,9 @@ module(..., package.seeall)
 
 --[[
 
- - Version: 1.3
- - Made by Ricardo Rauber Pereira @ 2010
- - Blog: http://rauberlabs.blogspot.com/
- - Mail: ricardorauber@gmail.com
-
 ******************
  - INFORMATION
 ******************
-
-  - Sample scene.
 
 --]]
 
@@ -26,7 +19,7 @@ new = function ( params )
 	------------------
 	
 	local ui = require ( "modules.ui" )
-    local IMAGES = require ( "modules.images" )
+    local images = require ( "modules.images" )
 	
 	------------------
 	-- Groups
@@ -37,24 +30,12 @@ new = function ( params )
 	------------------
 	-- Display Objects
 	------------------
-<<<<<<< HEAD:modules/screen1.lua
-	local background = display.newImage( IMAGES.HOME_SCREEN )
-	local splashImage = display.newImage ( IMAGES.HOME_PAGE_SPLASH )
-	local headerHUD = display.newImage( IMAGES.GROUND )
-	local footerHUD = display.newImage( IMAGES.GROUND )
-	local title      = display.newText( "Director Class", 0, 0, native.systemFontBold, 16 )
-	local createdBy  = display.newText( "Created by Ricardo Rauber", 0, 0, native.systemFontBold, 16 )
-	local website    = display.newText( "http://rauberlabs.blogspot.com/", 0, 0, native.systemFontBold, 16 )
-=======
-	
-	local background = display.newImage( "HomeScreen.png" )
-	local splashImage = display.newImage ("HomePageSplash.png")
-	local headerHUD = display.newImage("ground.png")	
-	local footerHUD = display.newImage("ground.png")
-	--local title      = display.newText( "Director Class", 0, 0, native.systemFontBold, 16 )
-	--local createdBy  = display.newText( "Created by Ricardo Rauber", 0, 0, native.systemFontBold, 16 )
-	--local website    = display.newText( "http://rauberlabs.blogspot.com/", 0, 0, native.systemFontBold, 16 )
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
+
+	local background = display.newImage( images.HOME_SCREEN )
+	local splashImage = display.newImage ( images.HOME_PAGE_SPLASH )
+	local headerHUD = display.newImage( images.GROUND )
+	local footerHUD = display.newImage( images.GROUND )
+
 	
 	------------------
 	-- Link
@@ -86,11 +67,7 @@ new = function ( params )
 	--
 	local bt02t = function ( event ) --My Page
 		if event.phase == "release" then
-<<<<<<< HEAD:modules/screen1.lua
-			director:changeScene( "modules.myPage", "moveFromLeft" )
-=======
-			director:changeScene( "upgrade", "moveFromLeft" )
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
+			director:changeScene( "modules.upgrade", "moveFromLeft" )
 		end
 	end
 	--
@@ -108,21 +85,13 @@ new = function ( params )
 	--
 	local bt05t = function ( event )
 		if event.phase == "release" then
-<<<<<<< HEAD:modules/screen1.lua
-			director:changeScene( "modules.screen2", "flip" )
-=======
-			director:changeScene( "myPage", "flip" )
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
+			director:changeScene( "modules.myPage", "flip" )
 		end
 	end
 	--
 	local bt06t = function ( event )
 		if event.phase == "release" then
-<<<<<<< HEAD:modules/screen1.lua
-			director:changeScene( "modules.screen1", "downFlip" ) --previously screen2
-=======
-			director:changeScene( "home", "downFlip" ) --previously screen2
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
+			director:changeScene( "modules.home", "downFlip" ) --previously screen2
 		end
 	end
 	--
@@ -145,8 +114,8 @@ new = function ( params )
 	--HUD Buttons
 	
 	local bt01 = ui.newButton{
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "MISSIONS",
 					size = 40,
 					font = "Tahoma",
@@ -155,67 +124,38 @@ new = function ( params )
 	}
 	--
 	local bt02 = ui.newButton{
-<<<<<<< HEAD:modules/screen1.lua
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
-					text = "MY PAGE",
-					size = 40,
-=======
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
-					size = 32,
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt02t,
 					id = "bt02"
 	}
 	--
 	local bt03 = ui.newButton{
-<<<<<<< HEAD:modules/screen1.lua
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
-					text = "UPGRADE",
-					size = 40,
-=======
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "STORAGE",
-					size = 32,
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt03t,
 					id = "bt03"
 	}
 	--
-<<<<<<< HEAD:modules/screen1.lua
-	local bt04 = ui.newButton{
-					default = IMAGES.BUTTON_TAP_START_UP,
-					over = IMAGES.BUTTON_TAP_START_DOWN,
-					onEvent = bt04t, --previously bt04t
-					id = "bt04"
-	}
-	--
 	local bt05 = ui.newButton{
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
-					text = "BACK",
-					size = 40,
-=======
-	local bt05 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "MY PAGE",
-					size = 32,
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt05t,
 					id = "bt05"
 	}
 	--
 	local bt06 = ui.newButton{
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "HOME",
 					size = 56,
 					font = "Tahoma",
@@ -224,17 +164,10 @@ new = function ( params )
 	}
 	--
 	local bt07 = ui.newButton{
-<<<<<<< HEAD:modules/screen1.lua
-					default = IMAGES.BUTTON_HUD_UP,
-					over = IMAGES.BUTTON_HUD_DOWN,
-					text = "NEXT",
-					size = 40,
-=======
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "ASTEROIDS",
-					size = 32,
->>>>>>> ec1cf006ee0b5a4eff203a639d4e0532ea130ef7:screen1.lua
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt07t,
 					id = "bt07"
@@ -244,15 +177,15 @@ new = function ( params )
 	
 	--
 	local bt08 = ui.newButton{
-					default = IMAGES.BUTTON_CROSSFADE,
-					over = IMAGES.BUTTON_CROSSFADE,
+					default = images.BUTTON_CROSSFADE,
+					over = images.BUTTON_CROSSFADE,
 					onEvent = bt08t,
 					id = "bt08"
 	}
 	--
 	local bt04 = ui.newButton{
-					default = "BtnTapStartUp.png",
-					over = "BtnTapStartDown.png",
+					default = images.BUTTON_TAP_START_UP,
+					over = images.BUTTON_TAP_START_DOWN,
 					onEvent = bt04t, --previously bt04t
 					id = "bt04"
 	}
@@ -265,7 +198,7 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btSlide = display.newImage( IMAGES.BUTTON_SLIDE )
+	local btSlide = display.newImage( images.BUTTON_SLIDE )
 	
 	------------------
 	-- Listener
@@ -289,7 +222,7 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btPopUp = display.newImage( IMAGES.BUTTON_POPUP )
+	local btPopUp = display.newImage( images.BUTTON_POPUP )
 	
 	------------------
 	-- On Close
@@ -337,7 +270,7 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btParameters = display.newImage( IMAGES.BUTTON_PARAMETERS )
+	local btParameters = display.newImage( images.BUTTON_PARAMETERS )
 	
 	------------------
 	-- Listener
