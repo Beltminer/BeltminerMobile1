@@ -6,16 +6,9 @@ module(..., package.seeall)
 
 --[[
 
- - Version: 1.3
- - Made by Ricardo Rauber Pereira @ 2010
- - Blog: http://rauberlabs.blogspot.com/
- - Mail: ricardorauber@gmail.com
-
 ******************
  - INFORMATION
 ******************
-
-  - Sample scene.
 
 --]]
 
@@ -25,7 +18,8 @@ new = function ( params )
 	-- Imports
 	------------------
 	
-	local ui = require ( "ui" )
+	local ui = require ( "modules.ui" )
+    local images = require ( "modules.images" )
 	
 	------------------
 	-- Groups
@@ -37,10 +31,10 @@ new = function ( params )
 	-- Display Objects
 	------------------
 	
-	local background = display.newImage( "HomeScreen.png" )
-	local splashImage = display.newImage ("HomePageSplash.png")
-	local headerHUD = display.newImage("ground.png")	
-	local footerHUD = display.newImage("ground.png")
+	local background = display.newImage( images.HOME_SCREEN )
+	local splashImage = display.newImage ( images.HOME_PAGE_SPLASH )
+	local headerHUD = display.newImage(images.GROUND)
+	local footerHUD = display.newImage(images.GROUND)
 	--local title      = display.newText( "Director Class", 0, 0, native.systemFontBold, 16 )
 	--local createdBy  = display.newText( "Created by Ricardo Rauber", 0, 0, native.systemFontBold, 16 )
 	--local website    = display.newText( "http://rauberlabs.blogspot.com/", 0, 0, native.systemFontBold, 16 )
@@ -69,49 +63,49 @@ new = function ( params )
 	
 	local bt01t = function ( event )
 		if event.phase == "release" then --Missions
-			director:changeScene( "missions", "overFromRight" )
+			director:changeScene( "modules.missions", "overFromRight" )
 		end
 	end
 	--
 	local bt02t = function ( event ) --My Page
 		if event.phase == "release" then
-			director:changeScene( "upgrade", "moveFromLeft" )
+			director:changeScene( "modules.upgrade", "moveFromLeft" )
 		end
 	end
 	--
 	local bt03t = function ( event ) --Upgrade
 		if event.phase == "release" then
-			director:changeScene( "upgrade", "moveFromTop" )
+			director:changeScene( "modules.upgrade", "moveFromTop" )
 		end
 	end
 	--
 	local bt04t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "missions", "overFromBottom" )
+			director:changeScene( "modules.missions", "overFromBottom" )
 		end
 	end
 	--
 	local bt05t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "myPage", "flip" )
+			director:changeScene( "modules.myPage", "flip" )
 		end
 	end
 	--
 	local bt06t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "home", "downFlip" ) --previously screen2
+			director:changeScene( "modules.home", "downFlip" ) --previously screen2
 		end
 	end
 	--
 	local bt07t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "fade" )
+			director:changeScene( "modules.screen2", "fade" )
 		end
 	end
 	--
 	local bt08t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "screen2", "crossfade" )
+			director:changeScene( "modules.screen2", "crossfade" )
 		end
 	end
 	
@@ -122,8 +116,8 @@ new = function ( params )
 	--HUD Buttons
 	
 	local bt01 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "MISSIONS",
 					size = 40,
 					font = "Tahoma",
@@ -132,8 +126,8 @@ new = function ( params )
 	}
 	--
 	local bt02 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
 					size = 32,
 					font = "Tahoma",
@@ -142,8 +136,8 @@ new = function ( params )
 	}
 	--
 	local bt03 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "STORAGE",
 					size = 32,
 					font = "Tahoma",
@@ -152,8 +146,8 @@ new = function ( params )
 	}
 	--
 	local bt05 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "MY PAGE",
 					size = 32,
 					font = "Tahoma",
@@ -162,8 +156,8 @@ new = function ( params )
 	}
 	--
 	local bt06 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "HOME",
 					size = 56,
 					font = "Tahoma",
@@ -172,8 +166,8 @@ new = function ( params )
 	}
 	--
 	local bt07 = ui.newButton{
-					default = "BtnHUDUp.png",
-					over = "BtnHUDDown.png",
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
 					text = "ASTEROIDS",
 					size = 32,
 					font = "Tahoma",
@@ -185,15 +179,15 @@ new = function ( params )
 	
 	--
 	local bt08 = ui.newButton{
-					default = "bt_crossfade.png",
-					over = "bt_crossfade.png",
+					default = images.BUTTON_CROSSFADE,
+					over = images.BUTTON_CROSSFADE,
 					onEvent = bt08t,
 					id = "bt08"
 	}
 	--
 	local bt04 = ui.newButton{
-					default = "BtnTapStartUp.png",
-					over = "BtnTapStartDown.png",
+					default = images.BUTTON_TAP_START_UP,
+					over = images.BUTTON_TAP_START_DOWN,
 					onEvent = bt04t, --previously bt04t
 					id = "bt04"
 	}
@@ -206,7 +200,7 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btSlide = display.newImage( "bt_slide.png" )
+	local btSlide = display.newImage( images.BUTTON_SLIDE )
 	
 	------------------
 	-- Listener
@@ -215,9 +209,9 @@ new = function ( params )
 	local btSlidet = function ( event )
 		if event.phase == "ended" then
 			if event.xStart >= event.x then
-				director:changeScene( "screen2", "moveFromRight" )
+				director:changeScene( "modules.screen2", "moveFromRight" )
 			else
-				director:changeScene( "screen2", "moveFromLeft" )
+				director:changeScene( "modules.screen2", "moveFromLeft" )
 			end
 		end
 	end
@@ -230,7 +224,7 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btPopUp = display.newImage( "bt_popup.png" )
+	local btPopUp = display.newImage( images.BUTTON_POPUP )
 	
 	------------------
 	-- On Close
@@ -266,7 +260,7 @@ new = function ( params )
 	
 	local btPopUpt = function ( event )
 		if event.phase == "ended" then
-			director:openPopUp( "screen3", popClosed )
+			director:openPopUp( "modules.screen3", popClosed )
 		end
 	end
 	
@@ -278,7 +272,7 @@ new = function ( params )
 	-- Image
 	------------------
 	
-	local btParameters = display.newImage( "bt_parameters.png" )
+	local btParameters = display.newImage( images.BUTTON_PARAMETERS )
 	
 	------------------
 	-- Listener
@@ -286,7 +280,7 @@ new = function ( params )
 	
 	local btParameterst = function ( event )
 		if event.phase == "ended" then
-			director:changeScene( { label="Sending Parameters", reload=true } , "screen2", "fade", "white" )
+			director:changeScene( { label="Sending Parameters", reload=true } , "modules.screen2", "fade", "white" )
 		end
 	end
 	
