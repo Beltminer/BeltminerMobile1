@@ -123,7 +123,10 @@ new = function ( params )
 					over = images.REQUIRES_DEED_DOWN,
 					onEvent = btRequiresDeed,
 					id = "buttonRequiresDeed2"
-	}
+    }
+
+    local middleGridGroup = display.newGroup()
+
 	--====================================================================--
 	-- INITIALIZE
 	--====================================================================--
@@ -135,12 +138,13 @@ new = function ( params )
 		------------------
 		
 --		localGroup:insert( background )
-		localGroup:insert(buttonClaimSlot1)
-		localGroup:insert(buttonClaimSlot2)
-		localGroup:insert(buttonStakeClaim)
-		localGroup:insert(buttonRequiresSignatory)
-		localGroup:insert(buttonRequiresDeed1)
-		localGroup:insert(buttonRequiresDeed2)
+        middleGridGroup:insert(buttonClaimSlot1)
+        middleGridGroup:insert(buttonClaimSlot2)
+        middleGridGroup:insert(buttonStakeClaim)
+        middleGridGroup:insert(buttonRequiresSignatory)
+        middleGridGroup:insert(buttonRequiresDeed1)
+        middleGridGroup:insert(buttonRequiresDeed2)
+        localGroup:insert(middleGridGroup)
         localGroup:insert( claimTitle )
         localGroup:insert( probeTitle )
         localGroup:insert( hud.new({label="asteroids"}) )
@@ -149,6 +153,9 @@ new = function ( params )
 		------------------
 
 		--
+        middleGridGroup.x = 0
+        middleGridGroup.y = 100
+
 		-- Claim Button
 		buttonClaimSlot1.x = 110
 		buttonClaimSlot1.y = 214
