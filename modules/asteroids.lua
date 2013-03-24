@@ -28,14 +28,15 @@ new = function ( params )
 	------------------
 	
 	local localGroup = display.newGroup()
-	
 	------------------
 	-- Display Objects
 	------------------
 	
---	local background = display.newImage( images.MY_PAGE_SCREEN )
-		
-	------------------
+--	local background = display.newImage( images.MY_PAGE_SCREEN ) 
+    local claimTitle = display.newText( "YOUR CLAIMS", 0, 0, Tahoma, 40 )
+    local probeTitle = display.newText( "LAUNCH PROBES", 0, 0, Tahoma, 40 )
+
+    ------------------
 	-- Functions
 	------------------
 	
@@ -67,13 +68,13 @@ new = function ( params )
 	--
 	local btRequireSignatory = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.requiresSignatory", "overFromBottom" )
+			director:changeScene( "modules.requiresSignatory", "overFromRight" )
 		end
 	end
 		--
 	local btRequiresDeed = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.requiresDeed", "overFromBottom" )
+			director:changeScene( "modules.requiresDeed", "overFromRight" )
 		end
 	end
 	--
@@ -140,6 +141,8 @@ new = function ( params )
 		localGroup:insert(buttonRequiresSignatory)
 		localGroup:insert(buttonRequiresDeed1)
 		localGroup:insert(buttonRequiresDeed2)
+        localGroup:insert( claimTitle )
+        localGroup:insert( probeTitle )
         localGroup:insert( hud.new({label="asteroids"}) )
 		------------------
 		-- Positions
@@ -164,6 +167,13 @@ new = function ( params )
 		-- Claim Button
 		buttonRequiresDeed2.x = 535
 		buttonRequiresDeed2.y = 425
+        
+        claimTitle.x = 155
+        claimTitle.y = 155
+        --		
+        --
+        probeTitle.x = 185
+        probeTitle.y = 650
 
 	end
 	

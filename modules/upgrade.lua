@@ -80,7 +80,7 @@ new = function ( params )
 					text = "UPGRADE",
 					size = 40,
 					font = "Tahoma",
-					onEvent = btGoClaimSlot,
+					onEvent = btGoScreen2,
 					id = "buttonUpgrade1"
 	}
 	--
@@ -90,7 +90,7 @@ new = function ( params )
 					text = "UPGRADE",
 					size = 40,
 					font = "Tahoma",
-					onEvent = btGoClaimSlot,
+					onEvent = btGoScreen2,
 					id = "buttonUpgrade2"
 	}
 	local buttonUpgrade3 = ui.newButton{
