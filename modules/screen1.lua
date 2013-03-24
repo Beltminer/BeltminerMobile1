@@ -1,7 +1,7 @@
 module(..., package.seeall)
 
 --====================================================================--
--- SCENE: SCREEN 1
+-- SCENE: HOME SCREEN
 --====================================================================--
 
 --[[
@@ -97,7 +97,7 @@ new = function ( params )
 	--
 	local bt07t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "fade" )
+			director:changeScene( "modules.asteroids", "fade" )
 		end
 	end
 	--

@@ -1,7 +1,7 @@
 module(..., package.seeall)
 
 --====================================================================--
--- SCENE: SCREEN 2
+-- SCENE: ASTEROIDS
 --====================================================================--
 
 --[[
@@ -64,6 +64,7 @@ new = function ( params )
 	-- Functions
 	------------------
 	
+	--Standard Hud Buttons
 	local bt01t = function ( event )
 		if event.phase == "release" then
 			director:changeScene( "modules.missions", "overFromRight" )
@@ -84,7 +85,7 @@ new = function ( params )
 	--
 	local bt04t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "overFromBottom" )
+			director:changeScene( "modules.claimInfo", "overFromBottom" )
 		end
 	end
 	--
@@ -105,30 +106,41 @@ new = function ( params )
 			director:changeScene( "modules.asteroids", "fade" )
 		end
 	end
-	--
+	-- Special Buttons
 	local bt08t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
+			director:changeScene( "modules.claimInfo", "overFromBottom" )
 		end
 	end
 	--
 	local bt09t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
+			director:changeScene( "modules.stakeClaim", "overFromBottom" )
 		end
 	end
 	--
 	local bt10t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
+			director:changeScene( "modules.requiresSignatory", "overFromBottom" )
 		end
 	end
-	
+		--
+	local bt11t = function ( event )
+		if event.phase == "release" then
+			director:changeScene( "modules.requiresDeed", "overFromBottom" )
+		end
+	end
+	--
+	local bt12t = function ( event )
+		if event.phase == "release" then
+			director:changeScene( "modules.requiresDeed", "overFromBottom" )
+		end
+	end
 	------------------
 	-- UI Objects
 	------------------
 	
-	-- HUD buttons
+	-- STANDARD HUD BUTTONS
 	
 	local bt01 = ui.newButton{
 					default = images.BUTTON_HUD_UP,
@@ -144,7 +156,7 @@ new = function ( params )
 					default = images.BUTTON_HUD_UP,
 					over = images.BUTTON_HUD_DOWN,
 					text = "UPGRADE",
-					size = 32,
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt02t,
 					id = "bt02"
@@ -154,7 +166,7 @@ new = function ( params )
 					default = images.BUTTON_HUD_UP,
 					over = images.BUTTON_HUD_DOWN,
 					text = "STORAGE",
-					size = 32,
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt03t,
 					id = "bt03"
@@ -164,7 +176,7 @@ new = function ( params )
 					default = images.BUTTON_HUD_UP,
 					over = images.BUTTON_HUD_DOWN,
 					text = "MY PAGE",
-					size = 32,
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt05t,
 					id = "bt05"
@@ -184,51 +196,71 @@ new = function ( params )
 					default = images.BUTTON_HUD_UP,
 					over = images.BUTTON_HUD_DOWN,
 					text = "ASTEROIDS",
-					size = 32,
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt07t,
 					id = "bt07"
 	}
 	
-	--Screen buttons
+	-- SPECIAL BUTTONS
 	
 	--
+	-- CLAIM SLOT BUTTON
+	--
     local bt04 = ui.newButton{
-                    default = images.BIG_BUTTON_UP,
-                    over = images.BIG_BUTTON_DOWN,
-                    text = "INBOX",
-                    size = 50,
-                    font = "Tahoma",
+                    default = images.CLAIM_SLOT_UP,
+                    over = images.CLAIM_SLOT_DOWN,
+--                    text = "INBOX",
+--                    size = 50,
+--                    font = "Tahoma",
                     onEvent = bt04t, --previously bt04t
                     id = "bt04"
     }
 	--
 	local bt08 = ui.newButton{
-					default = images.BIG_BUTTON_UP,
-					over = images.BIG_BUTTON_DOWN,
-					text = "CLAIM GIFTS",
-					size = 50,
-					font = "Tahoma",
+					default = images.CLAIM_SLOT_UP,
+					over = images.CLAIM_SLOT_DOWN,
+					--text = "CLAIM GIFTS",
+					--size = 50,
+					--font = "Tahoma",
 					onEvent = bt08t, --previously bt04t
 					id = "bt08"
 	}
 	local bt09 = ui.newButton{
-					default = images.BIG_BUTTON_UP,
-					over = images.BIG_BUTTON_DOWN,
-					text = "ADD FRIENDS",
-					size = 50,
-					font = "Tahoma",
+					default = images.STAKE_CLAIM_UP,
+					over = images.STAKE_CLAIM_DOWN,
+					--text = "ADD FRIENDS",
+					--size = 50,
+					--font = "Tahoma",
 					onEvent = bt09t, --previously bt04t
 					id = "bt09"
 	}
 	local bt10 = ui.newButton{
-					default = images.BIG_BUTTON_UP,
-					over = images.BIG_BUTTON_DOWN,
-					text = "SETTINGS",
-					size = 50,
-					font = "Tahoma",
+					default = images.REQUIRES_SIGNATORY_UP,
+					over = images.REQUIRES_SIGNATORY_DOWN,
+					--text = "SETTINGS",
+					--size = 50,
+					--font = "Tahoma",
 					onEvent = bt10t, --previously bt04t
 					id = "bt10"
+	}
+	local bt11 = ui.newButton{
+					default = images.REQUIRES_DEED_UP,
+					over = images.REQUIRES_DEED_DOWN,
+					--text = "ADD FRIENDS",
+					--size = 50,
+					--font = "Tahoma",
+					onEvent = bt11t, --previously bt04t
+					id = "bt11"
+	}
+	local bt12 = ui.newButton{
+					default = images.REQUIRES_DEED_UP,
+					over = images.REQUIRES_DEED_DOWN,
+					--text = "SETTINGS",
+					--size = 50,
+					--font = "Tahoma",
+					onEvent = bt12t, --previously bt04t
+					id = "bt12"
 	}
 	--====================================================================--
 	-- INITIALIZE
@@ -272,7 +304,8 @@ new = function ( params )
 		localGroup:insert( bt08 )
 		localGroup:insert( bt09 )
 		localGroup:insert( bt10 )
-		
+		localGroup:insert( bt11 )
+		localGroup:insert( bt12 )		
 		------------------
 		-- Positions
 		------------------
@@ -294,9 +327,9 @@ new = function ( params )
 		-- Upgrades Button
 		bt03.x = 535
 		bt03.y = 910
-		-- Tap To Start Button
-		bt04.x = 325
-		bt04.y = 280
+		-- Claim Button
+		bt04.x = 110
+		bt04.y = 214
 		-- Back Button
 		bt05.x = 115
 		bt05.y = 55
@@ -306,16 +339,21 @@ new = function ( params )
 		-- Next Button
 		bt07.x = 535
 		bt07.y = 55
-		--
+		-- Claim Button
 		bt08.x = 325
-		bt08.y = 435  
-		--
-		bt09.x = 325
-		bt09.y = 590  	
-		--
-		bt10.x = 325
-		bt10.y = 745  		
-		
+		bt08.y = 214  
+		-- Claim Button
+		bt09.x = 535
+		bt09.y = 214	
+		-- Claim Button
+		bt10.x = 110
+		bt10.y = 425  		
+		-- Claim Button
+		bt11.x = 325
+		bt11.y = 425	
+		-- Claim Button
+		bt12.x = 535
+		bt12.y = 425  			
 		------------------
 		-- Colors
 		------------------

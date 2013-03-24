@@ -41,4 +41,20 @@ SENSOR_UPGRADE = imageDir.."sensorUpgrade.png"
 ASTEROID2 = imageDir.."asteroid2.png"
 ASTEROID4 = imageDir.."asteroid4.png"
 BACKGROUND_CHEX = imageDir.."background_chex.png"
-CLAIM_SLOT = imageDir.."claimSlot.png"
+PROBE = imageDir.."mediumProbePerspective.png"
+DEED = imageDir.."keyCard.png"
+FRIENDS = imageDir.."friends.png"
+-- CLAIM SLOTS
+CLAIM_SLOT_UP = imageDir.."claimSlotUp.png"
+CLAIM_SLOT_DOWN = imageDir.."claimSlotDown.png"
+STAKE_CLAIM_UP = imageDir.."stakeClaimUpBtn.png"
+STAKE_CLAIM_DOWN = imageDir.."stakeClaimDownBtn.png"
+REQUIRES_DEED_UP = imageDir.."claimSlot_RequiresDeedUp.png"
+REQUIRES_DEED_DOWN = imageDir.."claimSlot_RequiresDeedDown.png"
+REQUIRES_SIGNATORY_UP = imageDir.."claimSlot_RequiresSignatoryUp.png"
+REQUIRES_SIGNATORY_DOWN = imageDir.."claimSlot_RequiresSignatoryDown.png"
+--
+
+
+
+

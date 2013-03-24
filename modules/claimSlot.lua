@@ -1,7 +1,7 @@
 module(..., package.seeall)
 
 --====================================================================--
--- SCENE: SCREEN 2
+-- SCENE: CLAIM SLOT
 --====================================================================--
 
 --[[
@@ -18,31 +18,13 @@ new = function ( params )
 	-- Params
 	------------------
 	
+
 	------------------
 	-- Imports
 	------------------
 	
 	local ui = require ( "modules.ui" )
     local images = require ( "modules.images" )
-	
-	------------------
-	-- Label
-	------------------
-	
-	--local vLabel = "MY PAGE"
-	local vReload = false
-	--
-	if type( params ) == "table" then
-		--
-		if type( params.label ) == "string" then
-			vLabel = params.label
-		end
-		--
-		if type( params.reload ) == "boolean" then
-			vReload = params.reload
-		end
-		--
-	end
 	
 	------------------
 	-- Groups
@@ -53,17 +35,17 @@ new = function ( params )
 	------------------
 	-- Display Objects
 	------------------
-	
-	local background = display.newImage( images.MY_PAGE_SCREEN )
-	--local title = display.newText( vLabel, 0, 0, Tahoma, 47 )
-	--local msgLabel = display.newText( "You get free fuel until level 20. Complete your missions now!", 0, 0, 410, 0, Tahoma, 36 ) -- make dynamic
+
+    local IMAGES = require ( "modules.images" )
+	local background = display.newImage( images.BACKGROUND2 )
 	local headerHUD = display.newImage( images.GROUND )
 	local footerHUD = display.newImage( images.GROUND )
-		
+	
 	------------------
 	-- Functions
 	------------------
 	
+	--Standard Hud Buttons
 	local bt01t = function ( event )
 		if event.phase == "release" then
 			director:changeScene( "modules.missions", "overFromRight" )
@@ -82,12 +64,12 @@ new = function ( params )
 		end
 	end
 	--
-	local bt04t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "overFromBottom" )
-		end
-	end
-	--
+--	local bt04t = function ( event )
+--		if event.phase == "release" then
+--			director:changeScene( "modules.claimSlot", "overFromBottom" )
+--		end
+--	end
+--
 	local bt05t = function ( event )
 		if event.phase == "release" then
 			director:changeScene( "modules.myPage", "flip" )
@@ -105,30 +87,29 @@ new = function ( params )
 			director:changeScene( "modules.asteroids", "fade" )
 		end
 	end
+	-- Special Buttons
+--	local bt08t = function ( event )
+--		if event.phase == "release" then
+--			director:changeScene( "modules.claimSlot", "crossfade" )
+--		end
+--	end
 	--
-	local bt08t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
-		end
-	end
+--	local bt09t = function ( event )
+--		if event.phase == "release" then
+--			director:changeScene( "modules.claimSlot", "crossfade" )
+--		end
+--	end
 	--
-	local bt09t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
-		end
-	end
-	--
-	local bt10t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
-		end
-	end
-	
+--	local bt10t = function ( event )
+--		if event.phase == "release" then
+--			director:changeScene( "modules.claimSlot", "crossfade" )
+--		end
+--	end
 	------------------
 	-- UI Objects
 	------------------
 	
-	-- HUD buttons
+	-- STANDARD HUD BUTTONS
 	
 	local bt01 = ui.newButton{
 					default = images.BUTTON_HUD_UP,
@@ -190,65 +171,58 @@ new = function ( params )
 					id = "bt07"
 	}
 	
-	--Screen buttons
+	-- SPECIAL BUTTONS
 	
 	--
-    local bt04 = ui.newButton{
-                    default = images.BIG_BUTTON_UP,
-                    over = images.BIG_BUTTON_DOWN,
-                    text = "INBOX",
-                    size = 50,
-                    font = "Tahoma",
-                    onEvent = bt04t, --previously bt04t
-                    id = "bt04"
-    }
+	-- CLAIM SLOT BUTTON
 	--
-	local bt08 = ui.newButton{
-					default = images.BIG_BUTTON_UP,
-					over = images.BIG_BUTTON_DOWN,
-					text = "CLAIM GIFTS",
-					size = 50,
-					font = "Tahoma",
-					onEvent = bt08t, --previously bt04t
-					id = "bt08"
-	}
-	local bt09 = ui.newButton{
-					default = images.BIG_BUTTON_UP,
-					over = images.BIG_BUTTON_DOWN,
-					text = "ADD FRIENDS",
-					size = 50,
-					font = "Tahoma",
-					onEvent = bt09t, --previously bt04t
-					id = "bt09"
-	}
-	local bt10 = ui.newButton{
-					default = images.BIG_BUTTON_UP,
-					over = images.BIG_BUTTON_DOWN,
-					text = "SETTINGS",
-					size = 50,
-					font = "Tahoma",
-					onEvent = bt10t, --previously bt04t
-					id = "bt10"
-	}
-	--====================================================================--
-	-- INITIALIZE
-	--====================================================================--
+--  local bt04 = ui.newButton{
+--                  default = images.CLAIM_SLOT_UP,
+--                  over = images.CLAIM_SLOT_DOWN,
+--                  text = "INBOX",
+--                  size = 50,
+--                  font = "Tahoma",
+--                  onEvent = bt04t, --previously bt04t
+--                  id = "bt04"
+--  }
+	--
+--	local bt08 = ui.newButton{
+--					default = images.CLAIM_SLOT_UP,
+--					over = images.CLAIM_SLOT_DOWN,
+--					--text = "CLAIM GIFTS",
+--					--size = 50,
+--					--font = "Tahoma",
+--					onEvent = bt08t, --previously bt04t
+--					id = "bt08"
+--	}
+--	local bt09 = ui.newButton{
+--					default = images.CLAIM_SLOT_UP,
+--					over = images.CLAIM_SLOT_DOWN,
+--					--text = "ADD FRIENDS",
+--					--size = 50,
+--					--font = "Tahoma",
+--					onEvent = bt09t, --previously bt04t
+--					id = "bt09"
+--	}
+--	local bt10 = ui.newButton{
+--					default = images.CLAIM_SLOT_UP,
+--					over = images.CLAIM_SLOT_DOWN,
+--					--text = "SETTINGS",
+--					--size = 50,
+--					--font = "Tahoma",
+--					onEvent = bt10t, --previously bt04t
+--					id = "bt10"
+--	}		
+	
+	
+	
 	
 	------------------
 	-- Listeners
 	------------------
 	
-	local touched = function ( event )
-		if event.phase == "ended" then
-			if vReload then
-				director:changeScene( { label="Scene Reloaded" }, "modules.screen2","moveFromRight" )
-			else
-				director:changeScene( "modules.screen1", "crossfade" )
-			end
-		end
-	end
 	
-	--====================================================================--
+--====================================================================--
 	-- INITIALIZE
 	--====================================================================--
 	
@@ -259,19 +233,18 @@ new = function ( params )
 		------------------
 		
 		localGroup:insert( background )
-		--localGroup:insert( title )
 		localGroup:insert( headerHUD )
 		localGroup:insert( footerHUD )
 		localGroup:insert( bt01 )
 		localGroup:insert( bt02 )
 		localGroup:insert( bt03 )
-		localGroup:insert( bt04 )
+--		localGroup:insert( bt04 )
 		localGroup:insert( bt05 )
 		localGroup:insert( bt06 )
 		localGroup:insert( bt07 )
-		localGroup:insert( bt08 )
-		localGroup:insert( bt09 )
-		localGroup:insert( bt10 )
+--		localGroup:insert( bt08 )
+--		localGroup:insert( bt09 )
+--		localGroup:insert( bt10 )
 		
 		------------------
 		-- Positions
@@ -294,9 +267,9 @@ new = function ( params )
 		-- Upgrades Button
 		bt03.x = 535
 		bt03.y = 910
-		-- Tap To Start Button
-		bt04.x = 325
-		bt04.y = 280
+		-- Claim Button
+--		bt04.x = 110
+--		bt04.y = 214
 		-- Back Button
 		bt05.x = 115
 		bt05.y = 55
@@ -306,29 +279,29 @@ new = function ( params )
 		-- Next Button
 		bt07.x = 535
 		bt07.y = 55
-		--
-		bt08.x = 325
-		bt08.y = 435  
-		--
-		bt09.x = 325
-		bt09.y = 590  	
-		--
-		bt10.x = 325
-		bt10.y = 745  		
+--		-- Claim Button
+--		bt08.x = 325
+--		bt08.y = 214  
+--		-- Claim Button
+--		bt09.x = 535
+--		bt09.y = 214	
+		-- Claim Button
+--		bt10.x = 110
+--		bt10.y = 425  		
 		
 		------------------
 		-- Colors
 		------------------
 		
-		--title:setTextColor( 152,152,152 )
+		
 		
 		------------------
 		-- Listeners
 		------------------
 		
-		background:addEventListener( "touch" , touched )
-		
+				
 	end
+	
 	
 	------------------
 	-- Initiate variables
