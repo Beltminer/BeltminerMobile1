@@ -49,17 +49,17 @@ new = function ( params )
 	------------------
 	
 	local localGroup = display.newGroup()
-	
 	------------------
 	-- Display Objects
 	------------------
 	
-	local background = display.newImage( images.MY_PAGE_SCREEN )
+	local background = display.newImage( images.BACKGROUND2 )
 	--local title = display.newText( vLabel, 0, 0, Tahoma, 47 )
 	--local msgLabel = display.newText( "You get free fuel until level 20. Complete your missions now!", 0, 0, 410, 0, Tahoma, 36 ) -- make dynamic
 	local headerHUD = display.newImage( images.GROUND )
 	local footerHUD = display.newImage( images.GROUND )
-		
+	local claimTitle = display.newText( "YOUR CLAIMS", 0, 0, Tahoma, 40 )
+	local probeTitle = display.newText( "LAUNCH PROBES", 0, 0, Tahoma, 40 )	
 	------------------
 	-- Functions
 	------------------
@@ -85,7 +85,7 @@ new = function ( params )
 	--
 	local bt04t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.claimInfo", "overFromBottom" )
+			director:changeScene( "modules.claimInfo", "overFromRight" )
 		end
 	end
 	--
@@ -109,31 +109,31 @@ new = function ( params )
 	-- Special Buttons
 	local bt08t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.claimInfo", "overFromBottom" )
+			director:changeScene( "modules.claimInfo", "overFromRight" )
 		end
 	end
 	--
 	local bt09t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.stakeClaim", "overFromBottom" )
+			director:changeScene( "modules.stakeClaim", "overFromRight" )
 		end
 	end
 	--
 	local bt10t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.requiresSignatory", "overFromBottom" )
+			director:changeScene( "modules.requiresSignatory", "overFromRight" )
 		end
 	end
 		--
 	local bt11t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.requiresDeed", "overFromBottom" )
+			director:changeScene( "modules.requiresDeed", "overFromRight" )
 		end
 	end
 	--
 	local bt12t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.requiresDeed", "overFromBottom" )
+			director:changeScene( "modules.requiresDeed", "overFromRight" )
 		end
 	end
 	------------------
@@ -305,7 +305,9 @@ new = function ( params )
 		localGroup:insert( bt09 )
 		localGroup:insert( bt10 )
 		localGroup:insert( bt11 )
-		localGroup:insert( bt12 )		
+		localGroup:insert( bt12 )
+		localGroup:insert( claimTitle )	
+		localGroup:insert( probeTitle )		
 		------------------
 		-- Positions
 		------------------
@@ -329,7 +331,7 @@ new = function ( params )
 		bt03.y = 910
 		-- Claim Button
 		bt04.x = 110
-		bt04.y = 214
+		bt04.y = 300
 		-- Back Button
 		bt05.x = 115
 		bt05.y = 55
@@ -341,19 +343,27 @@ new = function ( params )
 		bt07.y = 55
 		-- Claim Button
 		bt08.x = 325
-		bt08.y = 214  
+		bt08.y = 300 
 		-- Claim Button
 		bt09.x = 535
-		bt09.y = 214	
+		bt09.y = 300	
 		-- Claim Button
 		bt10.x = 110
-		bt10.y = 425  		
+		bt10.y = 510  		
 		-- Claim Button
 		bt11.x = 325
-		bt11.y = 425	
+		bt11.y = 510	
 		-- Claim Button
 		bt12.x = 535
-		bt12.y = 425  			
+		bt12.y = 510  	
+		--
+		claimTitle.x = 155
+		claimTitle.y = 155	
+		--		
+		--
+		probeTitle.x = 185
+		probeTitle.y = 650	
+		--
 		------------------
 		-- Colors
 		------------------

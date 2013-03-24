@@ -125,7 +125,7 @@ new = function ( params )
 	--
 	local bt07t = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "fade" )
+			director:changeScene( "modules.asteroids", "fade" )
 		end
 	end
 	--
@@ -153,7 +153,7 @@ new = function ( params )
                     default = images.BUTTON_HUD_UP,
                     over = images.BUTTON_HUD_DOWN,
                     text = "UPGRADE",
-                    size = 32,
+                    size = 40,
                     font = "Tahoma",
                     onEvent = bt02t,
                     id = "bt02"
@@ -163,7 +163,7 @@ new = function ( params )
                     default = images.BUTTON_HUD_UP,
                     over = images.BUTTON_HUD_DOWN,
                     text = "STORAGE",
-                    size = 32,
+                    size = 40,
                     font = "Tahoma",
                     onEvent = bt03t,
                     id = "bt03"
@@ -180,7 +180,7 @@ new = function ( params )
 					default = images.BUTTON_HUD_UP,
 					over = images.BUTTON_HUD_DOWN,
 					text = "MY PAGE",
-					size = 32,
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt05t,
 					id = "bt05"
@@ -200,7 +200,7 @@ new = function ( params )
 					default = images.BUTTON_HUD_UP,
 					over = images.BUTTON_HUD_DOWN,
 					text = "ASTEROIDS",
-					size = 32,
+					size = 40,
 					font = "Tahoma",
 					onEvent = bt07t,
 					id = "bt07"

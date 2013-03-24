@@ -54,7 +54,7 @@ new = function ( params )
 	local asteroid2 = display.newImage( IMAGES.ASTEROID2 )
 	local pageTitle = display.newText( pageTitleString, 0, 0, Tahoma, 40 )
 	local infoLabel = display.newText( infoString, 0, 0, 525, 0, Tahoma, 36 ) -- make dynamic
-	
+
 	------------------
 	-- Functions
 	------------------
@@ -109,6 +109,7 @@ new = function ( params )
 		localGroup:insert( pageTitle )
 		localGroup:insert( bt01 )
 		localGroup:insert( asteroid2 )
+
 		------------------
 		-- Positions
 		------------------
@@ -125,7 +126,8 @@ new = function ( params )
 
 		-- Asteroid Image
 		asteroid2.x = 325
-		asteroid2.y = 300		
+		asteroid2.y = 300	
+			
 		
 		------------------
 		-- Colors
