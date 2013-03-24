@@ -145,9 +145,9 @@ new = function ( params )
 		scientistWoman.y = 600
 		--		
 		
-		-- Tap To Start Button
-		btLaunchMission.x = 160
-		btLaunchMission.y = 740
+		-- Launch Button
+		btLaunchMission.x = 325
+		btLaunchMission.y = 760
 
 		------------------
 		-- Colors
