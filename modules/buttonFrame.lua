@@ -78,14 +78,14 @@ new = function ( params )
         end
     end
     --
-
+	--========================--
     --HUD Buttons
-
+	--========================--
     local buttonMyPage = ui.newButton{
         default = images.BUTTON_HUD_UP,
         over = images.BUTTON_HUD_DOWN,
         text = "MY PAGE",
-        size = 32,
+        size = 40,
         font = "Tahoma",
         onEvent = btGoMyPage,
         id = "buttonMyPage"
@@ -105,7 +105,7 @@ new = function ( params )
         default = images.BUTTON_HUD_UP,
         over = images.BUTTON_HUD_DOWN,
         text = "ASTEROIDS",
-        size = 32,
+        size = 40,
         font = "Tahoma",
         onEvent = btGoAsteroids,
         id = "buttonAsteroids"
@@ -115,7 +115,7 @@ new = function ( params )
         default = images.BUTTON_HUD_UP,
         over = images.BUTTON_HUD_DOWN,
         text = "UPGRADE",
-        size = 32,
+        size = 40,
         font = "Tahoma",
         onEvent = btGoUpgrades,
         id = "buttonUpgrades"
@@ -135,7 +135,7 @@ new = function ( params )
         default = images.BUTTON_HUD_UP,
         over = images.BUTTON_HUD_DOWN,
         text = "STORAGE",
-        size = 32,
+        size = 40,
         font = "Tahoma",
         onEvent = btGoStorage,
         id = "buttonStorage"
