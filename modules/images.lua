@@ -53,8 +53,15 @@ REQUIRES_DEED_UP = imageDir.."claimSlot_RequiresDeedUp.png"
 REQUIRES_DEED_DOWN = imageDir.."claimSlot_RequiresDeedDown.png"
 REQUIRES_SIGNATORY_UP = imageDir.."claimSlot_RequiresSignatoryUp.png"
 REQUIRES_SIGNATORY_DOWN = imageDir.."claimSlot_RequiresSignatoryDown.png"
---
-
+-- Launch Buttons
+LAUNCH_PROBE_SHORT_UP = imageDir.."shortProbeLaunchBtnUp.png"
+LAUNCH_PROBE_SHORT_DOWN = imageDir.."shortProbeLaunchBtnDwn.png"
+LAUNCH_PROBE_MED_UP = imageDir.."medProbeLaunchBtnUp.png"
+LAUNCH_PROBE_MED_DOWN = imageDir.."medProbeLaunchBtnDwn.png"
+LAUNCH_PROBE_LONG_UP = imageDir.."longProbeLaunchBtnUp.png"
+LAUNCH_PROBE_LONG_DOWN = imageDir.."longProbeLaunchBtnDwn.png"
+-- Select Probe
+SELECT_PROBE = imageDir.."selectProbe.png"
 
 
 
