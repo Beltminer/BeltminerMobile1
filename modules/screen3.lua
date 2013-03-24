@@ -6,10 +6,6 @@ module(..., package.seeall)
 
 --[[
 
- - Version: 1.3
- - Made by Ricardo Rauber Pereira @ 2010
- - Blog: http://rauberlabs.blogspot.com/
- - Mail: ricardorauber@gmail.com
 
 ******************
  - INFORMATION

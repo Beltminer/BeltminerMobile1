@@ -19,12 +19,13 @@ new = function ( params )
 	------------------
 	
 	local vLabel = "TOUCH TO GO BACK"
+    local mReturnToModule = "home"
 	local vReload = false
 	--
 	if type( params ) == "table" then
 		--
 		if type( params.label ) == "string" then
-			vLabel = params.label
+            mReturnToModule = params.label
 		end
 		--
 		if type( params.reload ) == "boolean" then
@@ -57,7 +58,7 @@ new = function ( params )
 			if vReload then
 				director:changeScene( { label="Scene Reloaded" }, "modules.screen2","moveFromRight" )
 			else
-				director:changeScene( "modules.screen1", "crossfade" )
+				director:changeScene( "modules."..mReturnToModule, "crossfade" )
 			end
 		end
 	end

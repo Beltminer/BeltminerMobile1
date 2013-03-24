@@ -13,37 +13,16 @@ module(..., package.seeall)
 --]]
 
 new = function ( params )
-	
-	------------------
-	-- Params
-	------------------
-	
+
 	------------------
 	-- Imports
 	------------------
 	
 	local ui = require ( "modules.ui" )
     local images = require ( "modules.images" )
+    local hud = require ( "modules.buttonFrame" )
 	
-	------------------
-	-- Label
-	------------------
-	
-	--local vLabel = "MY PAGE"
-	local vReload = false
-	--
-	if type( params ) == "table" then
-		--
-		if type( params.label ) == "string" then
-			vLabel = params.label
-		end
-		--
-		if type( params.reload ) == "boolean" then
-			vReload = params.reload
-		end
-		--
-	end
-	
+
 	------------------
 	-- Groups
 	------------------
@@ -54,232 +33,96 @@ new = function ( params )
 	-- Display Objects
 	------------------
 	
-	local background = display.newImage( images.MY_PAGE_SCREEN )
-	--local title = display.newText( vLabel, 0, 0, Tahoma, 47 )
-	--local msgLabel = display.newText( "You get free fuel until level 20. Complete your missions now!", 0, 0, 410, 0, Tahoma, 36 ) -- make dynamic
-	local headerHUD = display.newImage( images.GROUND )
-	local footerHUD = display.newImage( images.GROUND )
+--	local background = display.newImage( images.MY_PAGE_SCREEN )
 		
 	------------------
 	-- Functions
 	------------------
 	
-	--Standard Hud Buttons
-	local bt01t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.missions", "overFromRight" )
-		end
-	end
 	--
-	local bt02t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.upgrade", "moveFromLeft" )
-		end
-	end
-	--
-	local bt03t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.upgrade", "moveFromTop" )
-		end
-	end
-	--
-	local bt04t = function ( event )
+	local btGoClaimInfo = function ( event )
 		if event.phase == "release" then
 			director:changeScene( "modules.claimInfo", "overFromBottom" )
 		end
 	end
 	--
-	local bt05t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.myPage", "flip" )
-		end
-	end
 	--
-	local bt06t = function ( event )
+	local btGoScreen2 = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.screen1", "downFlip" ) --previously screen2
+			director:changeScene( "modules.screen2", "downFlip" )
 		end
 	end
+
+    local btGoClaimSlot = function ( event )
+        if event.phase == "release" then
+            director:changeScene( "modules.claimSlot", "crossfade" )
+        end
+    end
 	--
-	local bt07t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.asteroids", "fade" )
-		end
-	end
-	-- Special Buttons
-	local bt08t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.claimInfo", "overFromBottom" )
-		end
-	end
-	--
-	local bt09t = function ( event )
+	local btGoStakeClaim = function ( event )
 		if event.phase == "release" then
 			director:changeScene( "modules.stakeClaim", "overFromBottom" )
 		end
 	end
 	--
-	local bt10t = function ( event )
+	local btRequireSignatory = function ( event )
 		if event.phase == "release" then
 			director:changeScene( "modules.requiresSignatory", "overFromBottom" )
 		end
 	end
 		--
-	local bt11t = function ( event )
+	local btRequiresDeed = function ( event )
 		if event.phase == "release" then
 			director:changeScene( "modules.requiresDeed", "overFromBottom" )
 		end
 	end
 	--
-	local bt12t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.requiresDeed", "overFromBottom" )
-		end
-	end
 	------------------
 	-- UI Objects
 	------------------
-	
-	-- STANDARD HUD BUTTONS
-	
-	local bt01 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "MISSIONS",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt01t,
-					id = "bt01"
-	}
-	--
-	local bt02 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "UPGRADE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt02t,
-					id = "bt02"
-	}
-	--
-	local bt03 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "STORAGE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt03t,
-					id = "bt03"
-	}
-	--
-	local bt05 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "MY PAGE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt05t,
-					id = "bt05"
-	}
-	--
-	local bt06 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "HOME",
-					size = 60,
-					font = "Tahoma",
-					onEvent = bt06t,
-					id = "bt06"
-	}
-	--
-	local bt07 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "ASTEROIDS",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt07t,
-					id = "bt07"
-	}
-	
+
 	-- SPECIAL BUTTONS
 	
 	--
 	-- CLAIM SLOT BUTTON
 	--
-    local bt04 = ui.newButton{
+    local buttonClaimSlot1 = ui.newButton{
                     default = images.CLAIM_SLOT_UP,
                     over = images.CLAIM_SLOT_DOWN,
---                    text = "INBOX",
---                    size = 50,
---                    font = "Tahoma",
-                    onEvent = bt04t, --previously bt04t
-                    id = "bt04"
+                    onEvent = btGoClaimInfo,
+                    id = "buttonClaimSlot1"
     }
 	--
-	local bt08 = ui.newButton{
+	local buttonClaimSlot2 = ui.newButton{
 					default = images.CLAIM_SLOT_UP,
 					over = images.CLAIM_SLOT_DOWN,
-					--text = "CLAIM GIFTS",
-					--size = 50,
-					--font = "Tahoma",
-					onEvent = bt08t, --previously bt04t
-					id = "bt08"
+					onEvent = btGoClaimInfo,
+					id = "buttonClaimSlot2"
 	}
-	local bt09 = ui.newButton{
+	local buttonStakeClaim = ui.newButton{
 					default = images.STAKE_CLAIM_UP,
 					over = images.STAKE_CLAIM_DOWN,
-					--text = "ADD FRIENDS",
-					--size = 50,
-					--font = "Tahoma",
-					onEvent = bt09t, --previously bt04t
-					id = "bt09"
+					onEvent = btGoStakeClaim,
+					id = "buttonStakeClaim"
 	}
-	local bt10 = ui.newButton{
+	local buttonRequiresSignatory = ui.newButton{
 					default = images.REQUIRES_SIGNATORY_UP,
 					over = images.REQUIRES_SIGNATORY_DOWN,
-					--text = "SETTINGS",
-					--size = 50,
-					--font = "Tahoma",
-					onEvent = bt10t, --previously bt04t
-					id = "bt10"
+					onEvent = btRequireSignatory,
+					id = "buttonRequiresSignatory"
 	}
-	local bt11 = ui.newButton{
+	local buttonRequiresDeed1 = ui.newButton{
 					default = images.REQUIRES_DEED_UP,
 					over = images.REQUIRES_DEED_DOWN,
-					--text = "ADD FRIENDS",
-					--size = 50,
-					--font = "Tahoma",
-					onEvent = bt11t, --previously bt04t
-					id = "bt11"
+					onEvent = btRequiresDeed,
+					id = "buttonRequiresDeed1"
 	}
-	local bt12 = ui.newButton{
+	local buttonRequiresDeed2 = ui.newButton{
 					default = images.REQUIRES_DEED_UP,
 					over = images.REQUIRES_DEED_DOWN,
-					--text = "SETTINGS",
-					--size = 50,
-					--font = "Tahoma",
-					onEvent = bt12t, --previously bt04t
-					id = "bt12"
+					onEvent = btRequiresDeed,
+					id = "buttonRequiresDeed2"
 	}
-	--====================================================================--
-	-- INITIALIZE
-	--====================================================================--
-	
-	------------------
-	-- Listeners
-	------------------
-	
-	local touched = function ( event )
-		if event.phase == "ended" then
-			if vReload then
-				director:changeScene( { label="Scene Reloaded" }, "modules.screen2","moveFromRight" )
-			else
-				director:changeScene( "modules.screen1", "crossfade" )
-			end
-		end
-	end
-	
 	--====================================================================--
 	-- INITIALIZE
 	--====================================================================--
@@ -290,82 +133,38 @@ new = function ( params )
 		-- Inserts
 		------------------
 		
-		localGroup:insert( background )
-		--localGroup:insert( title )
-		localGroup:insert( headerHUD )
-		localGroup:insert( footerHUD )
-		localGroup:insert( bt01 )
-		localGroup:insert( bt02 )
-		localGroup:insert( bt03 )
-		localGroup:insert( bt04 )
-		localGroup:insert( bt05 )
-		localGroup:insert( bt06 )
-		localGroup:insert( bt07 )
-		localGroup:insert( bt08 )
-		localGroup:insert( bt09 )
-		localGroup:insert( bt10 )
-		localGroup:insert( bt11 )
-		localGroup:insert( bt12 )		
+--		localGroup:insert( background )
+		localGroup:insert(buttonClaimSlot1)
+		localGroup:insert(buttonClaimSlot2)
+		localGroup:insert(buttonStakeClaim)
+		localGroup:insert(buttonRequiresSignatory)
+		localGroup:insert(buttonRequiresDeed1)
+		localGroup:insert(buttonRequiresDeed2)
+        localGroup:insert( hud.new({label="asteroids"}) )
 		------------------
 		-- Positions
 		------------------
+
 		--
-		--title.x = 325
-		--title.y = 160
-		--
-		headerHUD.x = 320
-		headerHUD.y = 52.5
-		--
-		footerHUD.x = 320
-		footerHUD.y = 907.5
-		-- Missions Button
-		bt01.x = 325
-		bt01.y = 910
-		-- My Page Button
-		bt02.x = 115
-		bt02.y = 910
-		-- Upgrades Button
-		bt03.x = 535
-		bt03.y = 910
 		-- Claim Button
-		bt04.x = 110
-		bt04.y = 214
-		-- Back Button
-		bt05.x = 115
-		bt05.y = 55
-		-- Home Button
-		bt06.x = 325
-		bt06.y = 55
-		-- Next Button
-		bt07.x = 535
-		bt07.y = 55
+		buttonClaimSlot1.x = 110
+		buttonClaimSlot1.y = 214
 		-- Claim Button
-		bt08.x = 325
-		bt08.y = 214  
+		buttonClaimSlot2.x = 325
+		buttonClaimSlot2.y = 214
 		-- Claim Button
-		bt09.x = 535
-		bt09.y = 214	
+		buttonStakeClaim.x = 535
+		buttonStakeClaim.y = 214
 		-- Claim Button
-		bt10.x = 110
-		bt10.y = 425  		
+		buttonRequiresSignatory.x = 110
+		buttonRequiresSignatory.y = 425
 		-- Claim Button
-		bt11.x = 325
-		bt11.y = 425	
+		buttonRequiresDeed1.x = 325
+		buttonRequiresDeed1.y = 425
 		-- Claim Button
-		bt12.x = 535
-		bt12.y = 425  			
-		------------------
-		-- Colors
-		------------------
-		
-		--title:setTextColor( 152,152,152 )
-		
-		------------------
-		-- Listeners
-		------------------
-		
-		background:addEventListener( "touch" , touched )
-		
+		buttonRequiresDeed2.x = 535
+		buttonRequiresDeed2.y = 425
+
 	end
 	
 	------------------

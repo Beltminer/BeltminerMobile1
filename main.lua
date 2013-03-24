@@ -53,7 +53,7 @@ local main = function ()
 	-- Change scene without effects
 	------------------
 	
-	director:changeScene("modules.screen1")
+	director:changeScene("modules.home")
 	
 	------------------
 	-- Return

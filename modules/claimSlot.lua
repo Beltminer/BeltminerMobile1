@@ -10,6 +10,10 @@ module(..., package.seeall)
  - INFORMATION
 ******************
 
+ -- XXX: I DON'T KNOW WHAT THIS SCREEN DOES? ISN'T THIS JUST THE ASTEROIDS SCREEN?
+ -- NOTHING DONE HERE EXCEPT CLEAN UP OF COMMENTED OUT CODE
+
+
 --]]
 
 new = function ( params )
@@ -36,7 +40,6 @@ new = function ( params )
 	-- Display Objects
 	------------------
 
-    local IMAGES = require ( "modules.images" )
 	local background = display.newImage( images.BACKGROUND2 )
 	local headerHUD = display.newImage( images.GROUND )
 	local footerHUD = display.newImage( images.GROUND )
@@ -64,11 +67,6 @@ new = function ( params )
 		end
 	end
 	--
---	local bt04t = function ( event )
---		if event.phase == "release" then
---			director:changeScene( "modules.claimSlot", "overFromBottom" )
---		end
---	end
 --
 	local bt05t = function ( event )
 		if event.phase == "release" then
@@ -87,24 +85,6 @@ new = function ( params )
 			director:changeScene( "modules.asteroids", "fade" )
 		end
 	end
-	-- Special Buttons
---	local bt08t = function ( event )
---		if event.phase == "release" then
---			director:changeScene( "modules.claimSlot", "crossfade" )
---		end
---	end
-	--
---	local bt09t = function ( event )
---		if event.phase == "release" then
---			director:changeScene( "modules.claimSlot", "crossfade" )
---		end
---	end
-	--
---	local bt10t = function ( event )
---		if event.phase == "release" then
---			director:changeScene( "modules.claimSlot", "crossfade" )
---		end
---	end
 	------------------
 	-- UI Objects
 	------------------
@@ -170,62 +150,9 @@ new = function ( params )
 					onEvent = bt07t,
 					id = "bt07"
 	}
+
 	
-	-- SPECIAL BUTTONS
-	
-	--
-	-- CLAIM SLOT BUTTON
-	--
---  local bt04 = ui.newButton{
---                  default = images.CLAIM_SLOT_UP,
---                  over = images.CLAIM_SLOT_DOWN,
---                  text = "INBOX",
---                  size = 50,
---                  font = "Tahoma",
---                  onEvent = bt04t, --previously bt04t
---                  id = "bt04"
---  }
-	--
---	local bt08 = ui.newButton{
---					default = images.CLAIM_SLOT_UP,
---					over = images.CLAIM_SLOT_DOWN,
---					--text = "CLAIM GIFTS",
---					--size = 50,
---					--font = "Tahoma",
---					onEvent = bt08t, --previously bt04t
---					id = "bt08"
---	}
---	local bt09 = ui.newButton{
---					default = images.CLAIM_SLOT_UP,
---					over = images.CLAIM_SLOT_DOWN,
---					--text = "ADD FRIENDS",
---					--size = 50,
---					--font = "Tahoma",
---					onEvent = bt09t, --previously bt04t
---					id = "bt09"
---	}
---	local bt10 = ui.newButton{
---					default = images.CLAIM_SLOT_UP,
---					over = images.CLAIM_SLOT_DOWN,
---					--text = "SETTINGS",
---					--size = 50,
---					--font = "Tahoma",
---					onEvent = bt10t, --previously bt04t
---					id = "bt10"
---	}		
-	
-	
-	
-	
-	------------------
-	-- Listeners
-	------------------
-	
-	
---====================================================================--
-	-- INITIALIZE
-	--====================================================================--
-	
+
 	local initVars = function ()
 		
 		------------------
@@ -238,21 +165,13 @@ new = function ( params )
 		localGroup:insert( bt01 )
 		localGroup:insert( bt02 )
 		localGroup:insert( bt03 )
---		localGroup:insert( bt04 )
 		localGroup:insert( bt05 )
 		localGroup:insert( bt06 )
 		localGroup:insert( bt07 )
---		localGroup:insert( bt08 )
---		localGroup:insert( bt09 )
---		localGroup:insert( bt10 )
-		
+
 		------------------
 		-- Positions
 		------------------
-		--
-		--title.x = 325
-		--title.y = 160
-		--
 		headerHUD.x = 320
 		headerHUD.y = 52.5
 		--
@@ -267,9 +186,6 @@ new = function ( params )
 		-- Upgrades Button
 		bt03.x = 535
 		bt03.y = 910
-		-- Claim Button
---		bt04.x = 110
---		bt04.y = 214
 		-- Back Button
 		bt05.x = 115
 		bt05.y = 55
@@ -279,27 +195,7 @@ new = function ( params )
 		-- Next Button
 		bt07.x = 535
 		bt07.y = 55
---		-- Claim Button
---		bt08.x = 325
---		bt08.y = 214  
---		-- Claim Button
---		bt09.x = 535
---		bt09.y = 214	
-		-- Claim Button
---		bt10.x = 110
---		bt10.y = 425  		
-		
-		------------------
-		-- Colors
-		------------------
-		
-		
-		
-		------------------
-		-- Listeners
-		------------------
-		
-				
+
 	end
 	
 	

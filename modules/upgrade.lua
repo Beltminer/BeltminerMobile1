@@ -1,7 +1,7 @@
 module(..., package.seeall)
 
 --====================================================================--
--- SCENE: SCREEN 2
+-- SCENE: UPGRADE
 --====================================================================--
 
 --[[
@@ -13,37 +13,16 @@ module(..., package.seeall)
 --]]
 
 new = function ( params )
-	
-	------------------
-	-- Params
-	------------------
-	
+
 	------------------
 	-- Imports
 	------------------
 	
 	local ui = require ( "modules.ui" )
     local images = require ( "modules.images" )
+    local hud = require ( "modules.buttonFrame" )
 	
-	------------------
-	-- Label
-	------------------
-	
-	--local vLabel = "MY PAGE"
-	local vReload = false
-	--
-	if type( params ) == "table" then
-		--
-		if type( params.label ) == "string" then
-			vLabel = params.label
-		end
-		--
-		if type( params.reload ) == "boolean" then
-			vReload = params.reload
-		end
-		--
-	end
-	
+
 	------------------
 	-- Groups
 	------------------
@@ -79,194 +58,60 @@ new = function ( params )
 	local upgradeTitle04 = display.newText( "Prospector Mk II" , 0, 0, Tahoma, 30 )
 	local upgradeCurrent04 = display.newText( "Armor: 15 Range: 32" , 0, 0, Tahoma, 24 )
 	local upgradeStatus04 = display.newText( "6/10" , 0, 0, Tahoma, 36 )
-	local headerHUD = display.newImage( images.GROUND )
-	local footerHUD = display.newImage( images.GROUND )
-		
+
 	------------------
 	-- Functions
 	------------------
 	
-	local bt01t = function ( event ) -- Missions
+	local btGoScreen2 = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.missions", "overFromRight" )
+			director:changeScene( { label="upgrade"},"modules.screen2", "crossfade" )
 		end
-	end
-	--
-	local bt02t = function ( event ) -- My Page
-		if event.phase == "release" then
-			director:changeScene( "modules.upgrade", "moveFromLeft" )
-		end
-	end
-	--
-	local bt03t = function ( event ) -- Upgrade
-		if event.phase == "release" then
-			director:changeScene( "modules.upgrade", "moveFromTop" )
-		end
-	end
-	--
-	local bt04t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "overFromBottom" )
-		end
-	end
-	--
-	local bt05t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.myPage", "flip" )
-		end
-	end
-	--
-	local bt06t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen1", "downFlip" ) --previously screen2
-		end
-	end
-	--
-	local bt07t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.asteroids", "fade" )
-		end
-	end
-	--
-	local bt08t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
-		end
-	end
-	--
-	local bt09t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
-		end
-	end
-	--
-	local bt10t = function ( event )
-		if event.phase == "release" then
-			director:changeScene( "modules.screen2", "crossfade" )
-		end
-	end
+    end
 	
 	------------------
 	-- UI Objects
 	------------------
 
-    -- FIXME: OK, this copy and paste shit has got to go. This needs to be in its own module.
+	--
+	local buttonUpgrade1 = ui.newButton{
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
+					text = "UPGRADE",
+					size = 40,
+					font = "Tahoma",
+					onEvent = btGoClaimSlot,
+					id = "buttonUpgrade1"
+	}
+	--
+	local buttonUpgrade2 = ui.newButton{
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
+					text = "UPGRADE",
+					size = 40,
+					font = "Tahoma",
+					onEvent = btGoClaimSlot,
+					id = "buttonUpgrade2"
+	}
+	local buttonUpgrade3 = ui.newButton{
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
+					text = "UPGRADE",
+					size = 40,
+					font = "Tahoma",
+					onEvent = btGoScreen2,
+					id = "buttonUpgrade3"
+	}
+	local buttonUpgrade4 = ui.newButton{
+					default = images.BUTTON_HUD_UP,
+					over = images.BUTTON_HUD_DOWN,
+					text = "UPGRADE",
+					size = 40,
+					font = "Tahoma",
+					onEvent = btGoScreen2,
+					id = "buttonUpgrade4"
+	}
 
-	local bt01 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "MISSIONS",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt01t,
-					id = "bt01"
-	}
-	--
-	local bt02 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "UPGRADE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt02t,
-					id = "bt02"
-	}
-	--
-	local bt03 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "STORAGE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt03t,
-					id = "bt03"
-	}
-	--
-	local bt04 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "UPGRADE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt04t, --previously bt04t
-					id = "bt04"
-	}
-	--
-	local bt05 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "MY PAGE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt05t,
-					id = "bt05"
-	}
-	--
-	local bt06 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "HOME",
-					size = 60,
-					font = "Tahoma",
-					onEvent = bt06t,
-					id = "bt06"
-	}
-	--
-	local bt07 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "ASTEROIDS",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt07t,
-					id = "bt07"
-	}
-	--
-	local bt08 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "UPGRADE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt08t, --previously bt04t
-					id = "bt08"
-	}
-	local bt09 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "UPGRADE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt09t, --previously bt04t
-					id = "bt09"
-	}
-	local bt10 = ui.newButton{
-					default = images.BUTTON_HUD_UP,
-					over = images.BUTTON_HUD_DOWN,
-					text = "UPGRADE",
-					size = 40,
-					font = "Tahoma",
-					onEvent = bt10t, --previously bt04t
-					id = "bt10"
-	}
-	--====================================================================--
-	-- INITIALIZE
-	--====================================================================--
-	
-	------------------
-	-- Listeners
-	------------------
-	
-	local touched = function ( event )
-		if event.phase == "ended" then
-			if vReload then
-				director:changeScene( { label="Scene Reloaded" }, "modules.screen2","moveFromRight" )
-			else
-				director:changeScene( "modules.screen1", "crossfade" )
-			end
-		end
-	end
-	
 	--====================================================================--
 	-- INITIALIZE
 	--====================================================================--
@@ -278,8 +123,6 @@ new = function ( params )
 		------------------
 		
 		localGroup:insert( background )
-		localGroup:insert( headerHUD )
-		localGroup:insert( footerHUD )
 		localGroup:insert( upgradeBackground01 )
 		localGroup:insert( upgradeBackground02 )
 		localGroup:insert( upgradeBackground03 )
@@ -304,29 +147,15 @@ new = function ( params )
 		localGroup:insert( upgradeTitle04 )
 		localGroup:insert( upgradeCurrent04 )
 		localGroup:insert( upgradeStatus04 )
-		localGroup:insert( bt01 )
-		localGroup:insert( bt02 )
-		localGroup:insert( bt03 )
-		localGroup:insert( bt04 )
-		localGroup:insert( bt05 )
-		localGroup:insert( bt06 )
-		localGroup:insert( bt07 )
-		localGroup:insert( bt08 )
-		localGroup:insert( bt09 )
-		localGroup:insert( bt10 )
+		localGroup:insert(buttonUpgrade1)
+		localGroup:insert(buttonUpgrade2)
+		localGroup:insert(buttonUpgrade3)
+		localGroup:insert(buttonUpgrade4)
+        localGroup:insert( hud.new({label="upgrade"}) )
 		
 		------------------
 		-- Positions
 		------------------
-		--
-		--title.x = 325
-		--title.y = 160
-		--
-		headerHUD.x = 320
-		headerHUD.y = 52.5
-		--
-		footerHUD.x = 320
-		footerHUD.y = 907.5
 		--
 		upgradeBackground01.x = 320
 		upgradeBackground01.y = 275
@@ -402,36 +231,18 @@ new = function ( params )
 		--
 		upgradeStatus04.x = 210
 		upgradeStatus04.y = 805
-		-- Missions Button
-		bt01.x = 325
-		bt01.y = 910
-		-- My Page Button
-		bt02.x = 115
-		bt02.y = 910
-		-- Upgrade HUD Button
-		bt03.x = 535
-		bt03.y = 910
 		-- Upgrade Button
-		bt04.x = 515
-		bt04.y = 255
-		-- Back Button
-		bt05.x = 115
-		bt05.y = 55
-		-- Home Button
-		bt06.x = 325
-		bt06.y = 55
-		-- Next Button
-		bt07.x = 535
-		bt07.y = 55
+		buttonUpgrade1.x = 515
+		buttonUpgrade1.y = 255
 		-- Upgrade Button
-		bt08.x = 515
-		bt08.y = 410  
+		buttonUpgrade2.x = 515
+		buttonUpgrade2.y = 410
 		-- Upgrade Button
-		bt09.x = 515
-		bt09.y = 575	
+		buttonUpgrade3.x = 515
+		buttonUpgrade3.y = 575
 		-- Upgrade Button
-		bt10.x = 515
-		bt10.y = 745  		
+		buttonUpgrade4.x = 515
+		buttonUpgrade4.y = 745
 		
 		------------------
 		-- Colors
@@ -449,12 +260,6 @@ new = function ( params )
 		upgradeTitle04:setTextColor( 152,152,152 )
 		upgradeCurrent04:setTextColor( 152,152,152 )
 		upgradeStatus04:setTextColor( 152,152,152 )
-		
-		------------------
-		-- Listeners
-		------------------
-		
-		background:addEventListener( "touch" , touched )
 		
 	end
 	
