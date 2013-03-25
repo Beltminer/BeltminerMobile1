@@ -50,7 +50,7 @@ new = function ( params )
     local starsSmall = {}   -- tables to hold star display objects
     --local starsMed = {}
     --local starsLarge = {}
-    local footerHUD = display.newImage( "assets/ground.png",autoScaleOn) -- draw the HUD BG image
+    local footerHUD = display.newImage( images.GROUND, autoScaleOn) -- draw the HUD BG image
     local prospector = display.newImage( images.PROSPECTOR )
 
     -- Functions
