@@ -86,7 +86,7 @@ new = function ( params )
             print("home button pressed")
             -- garbage collection TO DO
             updateStars = false -- stop updating the stars
-            director:changeScene( "modules.screen2", "overFromRight" )
+            director:changeScene( {label="missionLaunch"}, "modules.screen2", "overFromRight" )
         end
     end
     
