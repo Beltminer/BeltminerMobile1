@@ -1,6 +1,8 @@
 module(..., package.seeall)
 
-
+--====================================================================--
+-- SCENE: MISSION LAUNCH SCREEN
+--====================================================================--
 
 new = function ( params )
 
@@ -82,9 +84,9 @@ new = function ( params )
     local touchHomeButton = function ( event ) --Missions
         if event.phase == "release" then
             print("home button pressed")
-            -- garbage collection
+            -- garbage collection TO DO
             updateStars = false -- stop updating the stars
-            director:changeScene( "modules.screen1", "overFromRight" )
+            director:changeScene( "modules.screen2", "overFromRight" )
         end
     end
     
