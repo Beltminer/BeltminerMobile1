@@ -14,6 +14,8 @@ HOME_PAGE_SPLASH = imageDir.."HomePageSplash.png"
 GROUND = imageDir.."ground.png"
 BUTTON_HUD_UP = imageDir.."BtnHUDUp.png"
 BUTTON_HUD_DOWN = imageDir.."BtnHUDDown.png"
+BUTTON_NARROW_UP = imageDir.."narrowButtonUp.png"
+BUTTON_NARROW_DOWN = imageDir.."narrowButtonDown.png"
 BUTTON_TAP_START_UP = imageDir.."BtnTapStartUp.png"
 BUTTON_TAP_START_DOWN = imageDir.."BtnTapStartDown.png"
 BUTTON_CROSSFADE = imageDir.."bt_crossfade.png"
@@ -62,6 +64,17 @@ LAUNCH_PROBE_LONG_UP = imageDir.."longProbeLaunchBtnUp.png"
 LAUNCH_PROBE_LONG_DOWN = imageDir.."longProbeLaunchBtnDwn.png"
 -- Select Probe
 SELECT_PROBE = imageDir.."selectProbe.png"
+NO_SIGN = imageDir.."no.png"
+-- Terra Nove Storage 
+STORE_LABEL = imageDir.."storeLabel.png"
+STORE_ITEM = imageDir.."storeItem.png"
+--Upgrade Slots
+MILITARY_UPGRADE = imageDir.."militaryUpgrade.png"
+REFINERY_UPGRADE = imageDir.."refineryUpgrade.png"
+TRANSPORT_UPGRADE = imageDir.."transportUpgrade.png"
+STORAGE_UPGRADE = imageDir.."storageUpgrade.png"
+MINING_UPGRADE = imageDir.."miningUpgrade.png"
+COLLECT_RESOURCES = imageDir.."collectUpgrade.png"
 
 
 

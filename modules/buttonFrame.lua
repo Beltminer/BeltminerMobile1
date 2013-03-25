@@ -74,7 +74,7 @@ new = function ( params )
     --
     local btGoStorage = function ( event )
         if event.phase == "release" then --Storage
-            director:changeScene( { label=mCallingModule}, "modules.screen2", "overFromRight" )
+            director:changeScene( { label=mCallingModule}, "modules.storage", "overFromRight" )
         end
     end
     --

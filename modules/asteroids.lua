@@ -89,13 +89,13 @@ new = function ( params )
 	--
 	local btLaunchMedProbe = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.selectProbe", "overFromRight" )
+			director:changeScene( "modules.noProbe", "overFromRight" )
 		end
 	end
 		--
 	local btLaunchLongProbe = function ( event )
 		if event.phase == "release" then
-			director:changeScene( "modules.selectProbe", "overFromRight" )
+			director:changeScene( "modules.noProbe", "overFromRight" )
 		end
 	end
 	--
