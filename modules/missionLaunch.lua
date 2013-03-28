@@ -11,7 +11,7 @@ new = function ( params )
     --print ("[1]includes")
     local ui = require ( "modules.ui" )
     local images = require ( "modules.images" )
-    
+
     -- global vars
     --print("[2]global vars")
     _W = display.contentWidth;  --Returns Screen Width
