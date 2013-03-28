@@ -20,7 +20,14 @@ new = function ( params )
     autoScaleOff = false
     maxSmallStars = 12          -- total number of small stars
     maxMedStars = 8
-    maxLargeStars = 6           -- total number of large stars
+    maxLargeStars = 6               -- total number of large stars
+    jumpBoostSpeedInc = 1           -- the increase of speed
+    jumpBoostSpeedMax = 30          -- the max jump speed, once reached, decelerate to 1
+    jumpBoostSpeedModifier = 1      -- the amount multipled against star speed
+    jumpBoostEngaged = false        -- flag set to true, when jumpBoost pressed
+    jumpBoostIncrease = false       -- when true, increase speed
+    jumpBoostDecrease = false       -- when true, decrease speed
+    jumpBoostHold = 1000            -- millsec to hold jump speed
     
     -- local vars
     --print("[3]local vars")
@@ -49,11 +56,11 @@ new = function ( params )
     local localGroup = display.newGroup()   -- create a display group
 
     -- Display Objects
-    local background = display.newImage( images.STARS,autoScaleOn )     -- create the background 
+    local background = display.newImage( "assets/stars.png")     -- create the background 
     local starsSmall = {}                                               -- tables to hold star display objects
     local starsMed = {}                                                 
     local starsLarge = {}
-    local footerHUD = display.newImage( images.GROUND, autoScaleOn)     -- draw the HUD BG image
+    local footerHUD = display.newImage( images.GROUND)     -- draw the HUD BG image
     local prospector = display.newImage( images.PROSPECTOR )            -- draw the prospector
 
     -- Functions
@@ -90,25 +97,61 @@ new = function ( params )
     
     function updateStars(event) -- move the small stars
         --print("updateSmallStars called")
-        local tDelta = event.time - tPrevious
-        tPrevious = event.time
+        
+        local tDelta = event.time - tPrevious   -- get the diff between now and previous time
+        tPrevious = event.time                  -- store now, in previous time
+        
+        -- update jumpboost
+        if jumpBoostEngaged then                                                    -- if jump boost was engaged
+            if jumpBoostIncrease then 
+                if jumpBoostSpeedModifier < jumpBoostSpeedMax then                          -- if modifier <= max then
+                    jumpBoostSpeedModifier = jumpBoostSpeedModifier + jumpBoostSpeedInc     -- increase the modifier until max is reached
+                    tJumpReachedMaxSpeed = event.time                                       -- get the time when the jump reached max speed
+                    --print("max speed increasing "..tJumpReachedMaxSpeed)
+                end
+                
+
+            end
+            
+            if jumpBoostSpeedModifier >= jumpBoostSpeedMax then
+                if event.time > (tJumpReachedMaxSpeed + jumpBoostHold) then
+                    jumpBoostIncrease = false
+                    jumpBoostDecrease = true
+               end
+            end
+            
+            if jumpBoostDecrease then
+                if jumpBoostSpeedModifier > 1 then                                          -- if modifier > 1 then
+                    jumpBoostSpeedModifier = jumpBoostSpeedModifier - jumpBoostSpeedInc     -- dec the modifier until 1 is reached
+                    --tJumpReachedMaxSpeed = event.time                                     -- get the time when the jump reached max speed
+                    --print("max speed increasing "..tJumpReachedMaxSpeed)
+                end
+                
+                if jumpBoostSpeedModifier <= 1 then
+                    jumpBoostIncrease = false
+                    jumpBoostDecrease = false
+                    jumpBoostEngaged = false
+                end
+            end
+        end
+
         if updateStars then     -- if true, update the stars
             for thisSmallStar = 1,maxSmallStars do -- repeat for each small star
-                starsSmall[thisSmallStar].y = starsSmall[thisSmallStar].y + ( starsSmall[thisSmallStar].movementSpeed * tDelta )
+                starsSmall[thisSmallStar].y = starsSmall[thisSmallStar].y + ((starsSmall[thisSmallStar].movementSpeed * jumpBoostSpeedModifier) * tDelta )
                 if starsSmall[thisSmallStar].y >= _H then 
                     starsSmall[thisSmallStar].y = 0
                 end
             end
             
             for thisMedStar = 1,maxMedStars do -- repeat for each large star
-                starsMed[thisMedStar].y = starsMed[thisMedStar].y + ( starsMed[thisMedStar].movementSpeed * tDelta )
+                starsMed[thisMedStar].y = starsMed[thisMedStar].y + ((starsMed[thisMedStar].movementSpeed * jumpBoostSpeedModifier)  * tDelta )
                 if starsMed[thisMedStar].y >= _H then 
                     starsMed[thisMedStar].y = 0
                 end
             end      
         
             for thisLargeStar = 1,maxLargeStars do -- repeat for each large star
-                starsLarge[thisLargeStar].y = starsLarge[thisLargeStar].y + ( starsLarge[thisLargeStar].movementSpeed * tDelta )
+                starsLarge[thisLargeStar].y = starsLarge[thisLargeStar].y + ((starsLarge[thisLargeStar].movementSpeed * jumpBoostSpeedModifier) * tDelta )
                 if starsLarge[thisLargeStar].y >= _H then 
                     starsLarge[thisLargeStar].y = 0
                 end
@@ -126,8 +169,15 @@ new = function ( params )
     end
     
     local touchJumpButton = function ( event )
-        if event.phase == "release" then -- if a button release is detected
+        if event.phase == "release" then                -- if a button release is detected
             print("jump boost button pressed")
+            if jumpBoostEngaged == false then           -- if the boost button was not pressed
+                jumpBoostEngaged = true                 -- set flag to true
+                jumpBoostIncrease = true                -- we want to increase the speed
+            end
+            
+                
+            
             
         end
     end
@@ -185,6 +235,9 @@ new = function ( params )
         -- Positions
         ------------------
         --
+        background.x = 320
+        background.y = 480
+        -- 
         prospector.x = 320
         prospector.y = 480
         --
