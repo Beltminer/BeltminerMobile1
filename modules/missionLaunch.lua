@@ -8,7 +8,7 @@ new = function ( params )
 
 
     -- includes (for other files)
-    --print ("[1]includes")
+    --print ("[1]includes") 
     local ui = require ( "modules.ui" )
     local images = require ( "modules.images" )
 
@@ -28,6 +28,7 @@ new = function ( params )
     jumpBoostIncrease = false       -- when true, increase speed
     jumpBoostDecrease = false       -- when true, decrease speed
     jumpBoostHold = 1000            -- millsec to hold jump speed
+    bgMovementSpeed = .0375
     
     -- local vars
     --print("[3]local vars")
@@ -56,7 +57,8 @@ new = function ( params )
     local localGroup = display.newGroup()   -- create a display group
 
     -- Display Objects
-    local background = display.newImage( "assets/stars.png")     -- create the background 
+    local background1 = display.newImage(images.STARS)                 -- create the first background 
+    local background2 = display.newImage(images.STARS)                  -- create the second background
     local starsSmall = {}                                               -- tables to hold star display objects
     local starsMed = {}                                                 
     local starsLarge = {}
@@ -109,17 +111,13 @@ new = function ( params )
                     tJumpReachedMaxSpeed = event.time                                       -- get the time when the jump reached max speed
                     --print("max speed increasing "..tJumpReachedMaxSpeed)
                 end
-                
-
             end
-            
             if jumpBoostSpeedModifier >= jumpBoostSpeedMax then
                 if event.time > (tJumpReachedMaxSpeed + jumpBoostHold) then
                     jumpBoostIncrease = false
                     jumpBoostDecrease = true
                end
             end
-            
             if jumpBoostDecrease then
                 if jumpBoostSpeedModifier > 1 then                                          -- if modifier > 1 then
                     jumpBoostSpeedModifier = jumpBoostSpeedModifier - jumpBoostSpeedInc     -- dec the modifier until 1 is reached
@@ -134,7 +132,22 @@ new = function ( params )
                 end
             end
         end
-
+        
+        -- update the BG
+        if updateStars then
+            background1.y = background1.y + (bgMovementSpeed * 1 * tDelta)
+            background2.y = background2.y + (bgMovementSpeed * 1 * tDelta)
+            --print ("bg1 "..background1.y)
+            if background1.y > 1440 then 
+                background1.y = -480
+            end
+            if background2.y > 1440 then 
+                background2.y = -480
+            end
+            
+        end
+          
+        -- update the stars
         if updateStars then     -- if true, update the stars
             for thisSmallStar = 1,maxSmallStars do -- repeat for each small star
                 starsSmall[thisSmallStar].y = starsSmall[thisSmallStar].y + ((starsSmall[thisSmallStar].movementSpeed * jumpBoostSpeedModifier) * tDelta )
@@ -161,7 +174,7 @@ new = function ( params )
     
     local touchHomeButton = function ( event ) --Missions
         if event.phase == "release" then
-            print("home button pressed")
+            --print("home button pressed")
             -- garbage collection TO DO
             updateStars = false -- stop updating the stars
             director:changeScene( "modules.home", "overFromRight" )
@@ -170,15 +183,11 @@ new = function ( params )
     
     local touchJumpButton = function ( event )
         if event.phase == "release" then                -- if a button release is detected
-            print("jump boost button pressed")
+            --print("jump boost button pressed")
             if jumpBoostEngaged == false then           -- if the boost button was not pressed
                 jumpBoostEngaged = true                 -- set flag to true
                 jumpBoostIncrease = true                -- we want to increase the speed
             end
-            
-                
-            
-            
         end
     end
 
@@ -216,7 +225,8 @@ new = function ( params )
     -- INITIALIZE
     local initVars = function ()
 	    --print("initVars started")	
-        localGroup:insert( background )
+        localGroup:insert( background1 )
+        localGroup:insert( background2 )
         for thisSmallStar = 1,maxSmallStars do -- repeat for each small star
             localGroup:insert( starsSmall[thisSmallStar] )
         end
@@ -235,8 +245,11 @@ new = function ( params )
         -- Positions
         ------------------
         --
-        background.x = 320
-        background.y = 480
+        background1.x = 320
+        background1.y = 480
+        --
+        background2.x = 320
+        background2.y = -480
         -- 
         prospector.x = 320
         prospector.y = 480
